@@ -20,6 +20,7 @@
 		3D887C2618FF6D5400F2A9F1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3D887C2418FF6D5400F2A9F1 /* InfoPlist.strings */; };
 		3D887C2818FF6D5400F2A9F1 /* Object_CommunicateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C2718FF6D5400F2A9F1 /* Object_CommunicateTests.m */; };
 		3D887C3318FF6EDD00F2A9F1 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C3218FF6EDD00F2A9F1 /* ListViewController.m */; };
+		3D887C3618FF800900F2A9F1 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C3518FF800900F2A9F1 /* MapViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		3D887C2718FF6D5400F2A9F1 /* Object_CommunicateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Object_CommunicateTests.m; sourceTree = "<group>"; };
 		3D887C3118FF6EDD00F2A9F1 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
 		3D887C3218FF6EDD00F2A9F1 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
+		3D887C3418FF800900F2A9F1 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		3D887C3518FF800900F2A9F1 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 				3D887C0918FF6D5400F2A9F1 /* Supporting Files */,
 				3D887C3118FF6EDD00F2A9F1 /* ListViewController.h */,
 				3D887C3218FF6EDD00F2A9F1 /* ListViewController.m */,
+				3D887C3418FF800900F2A9F1 /* MapViewController.h */,
+				3D887C3518FF800900F2A9F1 /* MapViewController.m */,
 			);
 			path = "Object Communicate";
 			sourceTree = "<group>";
@@ -247,6 +252,7 @@
 				3D887C1318FF6D5400F2A9F1 /* AppDelegate.m in Sources */,
 				3D887C0F18FF6D5400F2A9F1 /* main.m in Sources */,
 				3D887C3318FF6EDD00F2A9F1 /* ListViewController.m in Sources */,
+				3D887C3618FF800900F2A9F1 /* MapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -18,6 +18,7 @@
     
     // initialize view controllers
     self.LVC = [[ListViewController alloc] init];
+    self.MVC = [[MapViewController alloc] init];
     
     // set default (should be splash, temporarily the list view
     [self.window setRootViewController: self.LVC];
