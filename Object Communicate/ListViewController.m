@@ -45,19 +45,25 @@
 }
 
 
-
+/*
+ initialize the title view, probably a label, with its own section and background
+ */
 - (void) initTitle
 {
     
 }
 
-
+/*
+ initialize a view that displays an item's information, such as it's name, description, and a link to the location on a map
+ */
 - (void) initItem: (Item *) item
 {
     
 }
 
-
+/*
+ initialize the options view, this section will allow users to add an item, remove an item, change to other view controllers, etc.
+ */
 - (void) initOptions
 {
     
