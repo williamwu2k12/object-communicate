@@ -7,6 +7,7 @@
 //
 
 #import "ListViewController.h"
+#import "Item.h"
 
 @interface ListViewController ()
 
@@ -27,6 +28,14 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self initTitle];
+    Item * item1 = [[Item alloc] init];
+    Item * item2 = [[Item alloc] init];
+    Item * item3 = [[Item alloc] init];
+    [self initItem: item1];
+    [self initItem: item2];
+    [self initItem: item3];
+    [self initOptions];
 }
 
 - (void)didReceiveMemoryWarning
@@ -34,6 +43,26 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+
+- (void) initTitle
+{
+    
+}
+
+
+- (void) initItem: (Item *) item
+{
+    
+}
+
+
+- (void) initOptions
+{
+    
+}
+
 
 /*
 #pragma mark - Navigation

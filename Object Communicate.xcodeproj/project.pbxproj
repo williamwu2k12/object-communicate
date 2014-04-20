@@ -21,6 +21,7 @@
 		3D887C2818FF6D5400F2A9F1 /* Object_CommunicateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C2718FF6D5400F2A9F1 /* Object_CommunicateTests.m */; };
 		3D887C3318FF6EDD00F2A9F1 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C3218FF6EDD00F2A9F1 /* ListViewController.m */; };
 		3D887C3618FF800900F2A9F1 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C3518FF800900F2A9F1 /* MapViewController.m */; };
+		3D887C391903444300F2A9F1 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C381903444200F2A9F1 /* Item.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		3D887C3218FF6EDD00F2A9F1 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		3D887C3418FF800900F2A9F1 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		3D887C3518FF800900F2A9F1 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		3D887C371903444200F2A9F1 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		3D887C381903444200F2A9F1 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 				3D887C3218FF6EDD00F2A9F1 /* ListViewController.m */,
 				3D887C3418FF800900F2A9F1 /* MapViewController.h */,
 				3D887C3518FF800900F2A9F1 /* MapViewController.m */,
+				3D887C371903444200F2A9F1 /* Item.h */,
+				3D887C381903444200F2A9F1 /* Item.m */,
 			);
 			path = "Object Communicate";
 			sourceTree = "<group>";
@@ -249,6 +254,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D887C391903444300F2A9F1 /* Item.m in Sources */,
 				3D887C1318FF6D5400F2A9F1 /* AppDelegate.m in Sources */,
 				3D887C0F18FF6D5400F2A9F1 /* main.m in Sources */,
 				3D887C3318FF6EDD00F2A9F1 /* ListViewController.m in Sources */,
