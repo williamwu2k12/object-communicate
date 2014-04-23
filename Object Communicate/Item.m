@@ -15,6 +15,15 @@ NSString * description;
 CGFloat x;
 CGFloat y;
 
+- (id) initName: (NSString *) itemName andDescription: (NSString *) itemDescription andX: (CGFloat) itemX andY: (CGFloat) itemY
+{
+    name = itemName;
+    description = itemDescription;
+    x = itemX;
+    y = itemY;
+    return self;
+}
+
 - (void) setName: (NSString *) itemName
 {
     name = itemName;

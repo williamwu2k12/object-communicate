@@ -10,6 +10,7 @@
 
 @interface Item : NSObject
 
+- (id) initName: (NSString *) itemName andDescription: (NSString *) itemDescription andX: (CGFloat) itemX andY: (CGFloat) itemY;
 - (void) setName: (NSString *) itemName;
 - (void) setDescription: (NSString *) itemDescription;
 - (void) setLocationWithX: (CGFloat) xPos andY: (CGFloat) yPos;

@@ -15,6 +15,9 @@
 
 @implementation ListViewController
 
+UIScrollView * itemArea;
+NSMutableArray * items;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -29,9 +32,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initTitle];
-    Item * item1 = [[Item alloc] init];
-    Item * item2 = [[Item alloc] init];
-    Item * item3 = [[Item alloc] init];
+    [self initArea];
+    Item * item1 = [[Item alloc] initName: @"phone" andDescription: @"apple iphone" andX: 100.0 andY: 100.0];
+    Item * item2 = [[Item alloc] initName: @"laptop" andDescription: @"macbook pro, 13inch" andX: 600.0 andY: 900.0];
+    Item * item3 = [[Item alloc] initName: @"backpack" andDescription: @"black kenneth cole reaction tag with one side for water bottle" andX: 10.0 andY: 20.0];
     [self initItem: item1];
     [self initItem: item2];
     [self initItem: item3];
@@ -50,7 +54,26 @@
  */
 - (void) initTitle
 {
+    UILabel * label = [[UILabel alloc] initWithFrame: CGRectMake(0.0f, 0.0f, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
+    [label setBackgroundColor: [UIColor greenColor]];
+    [label setFont: [UIFont fontWithName: @"Verdana" size: 20.0f]];
+    [label setText: @"Your Tracked Items"];
+    [label setTextAlignment: NSTextAlignmentCenter];
+    [label setContentMode: UIViewContentModeCenter];
+    [self.view addSubview: label];
+}
+
+- (void) initArea
+{
+    items = [[NSMutableArray alloc] init];
     
+    UILabel * head = [[UILabel alloc] initWithFrame: CGRectMake(0.0f, 0.0f, [[UIScreen mainScreen] bounds].size.width, 0.0f)];
+    [items addObject: head];
+    
+    itemArea = [[UIScrollView alloc] initWithFrame: CGRectMake(0.0f, [[UIScreen mainScreen] bounds].size.height / 10.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 1.25)];
+    [itemArea setBackgroundColor: [UIColor cyanColor]];
+    [itemArea setScrollEnabled: true];
+    [self.view addSubview: itemArea];
 }
 
 /*
@@ -58,7 +81,14 @@
  */
 - (void) initItem: (Item *) item
 {
-    
+    UILabel * label = [[UILabel alloc] initWithFrame: CGRectMake(0.0, ((UILabel *) [items lastObject]).frame.origin.y + [[UIScreen mainScreen] bounds].size.height / 10.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
+    [[label layer] setBorderWidth: 1.0f];
+    [label setText: [item getName]];
+    [items addObject: label];
+    [itemArea addSubview: label];
+//    [item getDescription];
+//    [item getX];
+//    [item getY];
 }
 
 /*
