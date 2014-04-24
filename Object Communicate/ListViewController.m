@@ -61,7 +61,7 @@ NSMutableArray * items;
 {
     UILabel * label = [[UILabel alloc] initWithFrame: CGRectMake(0.0, [[UIScreen mainScreen] bounds].size.height / 50.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
     [label setFont: [UIFont fontWithName: @"Verdana" size: 20.0f]];
-    [label setText: @"Your Tracked Items"];
+    [label setText: @"William's Tracked Items"];
     [label setTextAlignment: NSTextAlignmentCenter];
     [label setContentMode: UIViewContentModeCenter];
     [self.view addSubview: label];
@@ -98,10 +98,7 @@ NSMutableArray * items;
 
 - (UITableViewCell *) tableView: (UITableView *) tableView cellForRowAtIndexPath: (NSIndexPath *) indexPath
 {
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier: @"cell"];
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier: @"cell"];
-    }
+    UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier: @"cell"];
     if ([indexPath row] < [items count])
     {
         Item * item = [items objectAtIndex: [indexPath row]];
@@ -115,9 +112,12 @@ NSMutableArray * items;
 
 - (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath
 {
-    Item * item = [items objectAtIndex: [indexPath row]];
-    UIAlertView * alert = [[UIAlertView alloc] initWithTitle: @"Item Clicked" message: [@"Go to MapViewController with coordinates: " stringByAppendingString: [NSString stringWithFormat: @"%f",[item getX]]] delegate: self cancelButtonTitle: @"Cancel" otherButtonTitles: nil];
-    [alert show];
+    if ([indexPath row] < [items count])
+    {
+        Item * item = [items objectAtIndex: [indexPath row]];
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle: @"Item Clicked" message: [@"Go to MapViewController with coordinates: " stringByAppendingString: [NSString stringWithFormat: @"%f",[item getX]]] delegate: self cancelButtonTitle: @"Cancel" otherButtonTitles: nil];
+        [alert show];
+    }
 //    [itemTable beginUpdates];
 //    Item * newitem = [[Item alloc] initName: @"Test" andDescription: @"testing for shits and giggles" andX: 69.0 andY: 69.0];
 //    [self initItem: newitem];
