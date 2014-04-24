@@ -15,8 +15,8 @@
 
 @implementation ListViewController
 
-//UIScrollView * itemArea;
-UITableView * itemArea;
+//UIScrollView * itemTable;
+UITableView * itemTable;
 NSMutableArray * items;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,12 +34,16 @@ NSMutableArray * items;
     // Do any additional setup after loading the view.
     [self initTitle];
     [self initArea];
-    Item * item1 = [[Item alloc] initName: @"phone" andDescription: @"apple iphone" andX: 100.0 andY: 100.0];
-    Item * item2 = [[Item alloc] initName: @"laptop" andDescription: @"macbook pro, 13inch" andX: 600.0 andY: 900.0];
-    Item * item3 = [[Item alloc] initName: @"backpack" andDescription: @"black kenneth cole reaction tag with one side for water bottle" andX: 10.0 andY: 20.0];
+    Item * item1 = [[Item alloc] initName: @"iPhone" andDescription: @"black iPhone with blue and green protective case" andX: 100.0 andY: 100.0];
+    Item * item2 = [[Item alloc] initName: @"MacBook Pro" andDescription: @"13 inch apple computer with serial 123456789" andX: 600.0 andY: 900.0];
+    Item * item3 = [[Item alloc] initName: @"Backpack" andDescription: @"black schoolbag with 4 layers and 1 mesh water bottle holder" andX: 10.0 andY: 20.0];
+    Item * item4 = [[Item alloc] initName: @"Textbook" andDescription: @"linear algebra and differential equations lays/nagles" andX: 1000.0 andY: 1000.0];
+    Item * item5 = [[Item alloc] initName: @"Batteries" andDescription: @"aaa batteries, remember to bring for event" andX: 50.0 andY: 50.0];
     [self initItem: item1];
     [self initItem: item2];
     [self initItem: item3];
+    [self initItem: item4];
+    [self initItem: item5];
     [self initOptions];
 }
 
@@ -55,8 +59,7 @@ NSMutableArray * items;
  */
 - (void) initTitle
 {
-    UILabel * label = [[UILabel alloc] initWithFrame: CGRectMake(0.0f, 0.0f, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
-    [label setBackgroundColor: [UIColor greenColor]];
+    UILabel * label = [[UILabel alloc] initWithFrame: CGRectMake(0.0, [[UIScreen mainScreen] bounds].size.height / 50.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
     [label setFont: [UIFont fontWithName: @"Verdana" size: 20.0f]];
     [label setText: @"Your Tracked Items"];
     [label setTextAlignment: NSTextAlignmentCenter];
@@ -66,27 +69,86 @@ NSMutableArray * items;
 
 - (void) initArea
 {
-//    items = [[NSMutableArray alloc] init];
-//    
+    items = [[NSMutableArray alloc] init];
+//
 //    // head is only placement for first time adding, dummy object for later referencing
 //    UILabel * head = [[UILabel alloc] initWithFrame: CGRectMake(0.0f, -[[UIScreen mainScreen] bounds].size.height / 10, [[UIScreen mainScreen] bounds].size.width, 0.0f)];
 //    [items addObject: head];
 //    
 //    // setup the scroll view
-//    itemArea = [[UIScrollView alloc] initWithFrame: CGRectMake(0.0f, [[UIScreen mainScreen] bounds].size.height / 10.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 1.25)];
-//    [itemArea setBackgroundColor: [UIColor cyanColor]];
-//    [itemArea setScrollEnabled: true];
-//    [self.view addSubview: itemArea];
-    itemArea = [[UITableView alloc] initWithFrame: CGRectMake(0.0f, [[UIScreen mainScreen] bounds].size.height / 10.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 1.25) style: UITableViewStylePlain];
-    [self.view addSubview: itemArea];
+//    itemTable = [[UIScrollView alloc] initWithFrame: CGRectMake(0.0f, [[UIScreen mainScreen] bounds].size.height / 10.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 1.25)];
+//    [itemTable setBackgroundColor: [UIColor cyanColor]];
+//    [itemTable setScrollEnabled: true];
+//    [self.view addSubview: itemTable];
+    itemTable = [[UITableView alloc] initWithFrame: CGRectMake(0.0f, [[UIScreen mainScreen] bounds].size.height / 10.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 1.25) style: UITableViewStylePlain];
+    [itemTable setDataSource: self];
+    [itemTable setDelegate: self];
+    [self.view addSubview: itemTable];
 }
+
+- (NSInteger) numberOfSectionsInTableView: (UITableView *) tableView
+{
+    return 1;
+}
+
+- (NSInteger) tableView: (UITableView *) tableView numberOfRowsInSection: (NSInteger) section
+{
+    return 20;
+}
+
+- (UITableViewCell *) tableView: (UITableView *) tableView cellForRowAtIndexPath: (NSIndexPath *) indexPath
+{
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier: @"cell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier: @"cell"];
+    }
+    if ([indexPath row] < [items count])
+    {
+        Item * item = [items objectAtIndex: [indexPath row]];
+        [[cell textLabel] setText: [item getName]];
+        [[cell textLabel] setFont: [UIFont fontWithName: @"Verdana" size: 12.0]];
+        [[cell detailTextLabel] setText: [item getDescription]];
+        [[cell detailTextLabel] setFont: [UIFont fontWithName: @"Verdana" size: 9.0]];
+    }
+    return cell;
+}
+
+- (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath
+{
+    Item * item = [items objectAtIndex: [indexPath row]];
+    UIAlertView * alert = [[UIAlertView alloc] initWithTitle: @"Item Clicked" message: [@"Go to MapViewController with coordinates: " stringByAppendingString: [NSString stringWithFormat: @"%f",[item getX]]] delegate: self cancelButtonTitle: @"Cancel" otherButtonTitles: nil];
+    [alert show];
+//    [itemTable beginUpdates];
+//    Item * newitem = [[Item alloc] initName: @"Test" andDescription: @"testing for shits and giggles" andX: 69.0 andY: 69.0];
+//    [self initItem: newitem];
+//    [itemTable insertRowsAtIndexPaths: [NSArray arrayWithObject: @""] withRowAnimation: UITableViewRowAnimationAutomatic];
+//    [itemTable endUpdates];
+}
+
+
+- (void) addItem: (Item *) item
+{
+    
+}
+
+- (void) removeItem: (Item *) item
+{
+    
+}
+
+- (void) updateItem: (Item *) item
+{
+    
+}
+
+
 
 /*
  initialize a view that displays an item's information, such as it's name, description, and a link to the location on a map
  */
 - (void) initItem: (Item *) item
 {
-    UITableViewCell * cell = [[UITableViewCell alloc] init];
+    [items addObject: item];
 //    UIView * label = [[UIView alloc] initWithFrame: CGRectMake(0.0, ((UILabel *) [items lastObject]).frame.origin.y + [[UIScreen mainScreen] bounds].size.height / 10.0 + 1.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
 //    [[label layer] setBorderWidth: 1.0];
 //    UILabel * name = [[UILabel alloc] initWithFrame: CGRectMake(0.0, 0.0, [[UIScreen mainScreen] bounds].size.width / 1.25, [[UIScreen mainScreen] bounds].size.height / 20.0)];
@@ -99,7 +161,7 @@ NSMutableArray * items;
 //    [label addSubview: name];
 //    [label addSubview: description];
 //    [items addObject: label];
-//    [itemArea addSubview: label];
+//    [itemTable addSubview: label];
 }
 
 /*
