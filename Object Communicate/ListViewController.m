@@ -118,6 +118,7 @@ NSMutableArray * items;
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle: @"Item Clicked" message: [@"Go to MapViewController with coordinates: " stringByAppendingString: [NSString stringWithFormat: @"%f",[item getX]]] delegate: self cancelButtonTitle: @"Cancel" otherButtonTitles: nil];
         [alert show];
     }
+    self.tabBarController.selectedIndex = 1;
 //    [itemTable beginUpdates];
 //    Item * newitem = [[Item alloc] initName: @"Test" andDescription: @"testing for shits and giggles" andX: 69.0 andY: 69.0];
 //    [self initItem: newitem];

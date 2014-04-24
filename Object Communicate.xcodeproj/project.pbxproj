@@ -23,6 +23,7 @@
 		3D887C3618FF800900F2A9F1 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C3518FF800900F2A9F1 /* MapViewController.m */; };
 		3D887C391903444300F2A9F1 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C381903444200F2A9F1 /* Item.m */; };
 		3D887C3C19086EBE00F2A9F1 /* ItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C3B19086EBE00F2A9F1 /* ItemView.m */; };
+		3D887C421909205400F2A9F1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C411909205400F2A9F1 /* RootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		3D887C381903444200F2A9F1 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		3D887C3A19086EBE00F2A9F1 /* ItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemView.h; sourceTree = "<group>"; };
 		3D887C3B19086EBE00F2A9F1 /* ItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemView.m; sourceTree = "<group>"; };
+		3D887C401909205400F2A9F1 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		3D887C411909205400F2A9F1 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +128,8 @@
 				3D887C0918FF6D5400F2A9F1 /* Supporting Files */,
 				3D887C3118FF6EDD00F2A9F1 /* ListViewController.h */,
 				3D887C3218FF6EDD00F2A9F1 /* ListViewController.m */,
+				3D887C401909205400F2A9F1 /* RootViewController.h */,
+				3D887C411909205400F2A9F1 /* RootViewController.m */,
 				3D887C3A19086EBE00F2A9F1 /* ItemView.h */,
 				3D887C3B19086EBE00F2A9F1 /* ItemView.m */,
 				3D887C3418FF800900F2A9F1 /* MapViewController.h */,
@@ -260,6 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D887C391903444300F2A9F1 /* Item.m in Sources */,
+				3D887C421909205400F2A9F1 /* RootViewController.m in Sources */,
 				3D887C1318FF6D5400F2A9F1 /* AppDelegate.m in Sources */,
 				3D887C0F18FF6D5400F2A9F1 /* main.m in Sources */,
 				3D887C3C19086EBE00F2A9F1 /* ItemView.m in Sources */,

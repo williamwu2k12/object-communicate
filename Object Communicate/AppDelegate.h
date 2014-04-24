@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RootViewController.h"
 #import "ListViewController.h"
 #import "MapViewController.h"
 
@@ -14,6 +15,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (strong, nonatomic) RootViewController * RVC;
 @property (strong, nonatomic) ListViewController * LVC;
 @property (strong, nonatomic) MapViewController * MVC;
 

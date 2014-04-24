@@ -17,11 +17,18 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     // initialize view controllers
+    self.RVC = [[RootViewController alloc] init];
     self.LVC = [[ListViewController alloc] init];
+    [[self.LVC tabBarItem] setTitle: @"Items"];
+    [[self.LVC tabBarItem] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName: @"Verdana" size: 20.0], NSFontAttributeName, nil] forState: UIControlStateNormal];
     self.MVC = [[MapViewController alloc] init];
+    [[self.MVC tabBarItem] setTitle: @"Map"];
+    [[self.MVC tabBarItem] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName: @"Verdana" size: 20.0], NSFontAttributeName, nil] forState: UIControlStateNormal];
+    [self.RVC setViewControllers: [NSArray arrayWithObjects: self.LVC, self.MVC, nil]];
     
     // set default (should be splash, temporarily the list view
-    [self.window setRootViewController: self.LVC];
+//    [self.window setRootViewController: self.LVC];
+    [self.window setRootViewController: self.RVC];
     
     [self.window makeKeyAndVisible];
     return YES;

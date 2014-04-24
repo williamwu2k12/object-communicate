@@ -1,18 +1,18 @@
 //
-//  MapViewController.m
+//  RootViewController.m
 //  Object Communicate
 //
-//  Created by William Wu on 4/16/14.
+//  Created by William Wu on 4/24/14.
 //  Copyright (c) 2014 William Wu. All rights reserved.
 //
 
-#import "MapViewController.h"
+#import "RootViewController.h"
 
-@interface MapViewController ()
+@interface RootViewController ()
 
 @end
 
-@implementation MapViewController
+@implementation RootViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,10 +27,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    UILabel * test = [[UILabel alloc] initWithFrame: CGRectMake(0.0, 100.0, [[UIScreen mainScreen] bounds].size.width, 100.0)];
-    [test setText: @"THIS SHOULD BE THE MAP"];
-    [test setTextAlignment: NSTextAlignmentCenter];
-    [self.view addSubview: test];
 }
 
 - (void)didReceiveMemoryWarning
