@@ -10,10 +10,12 @@
 
 @implementation Item
 
-NSString * name;
-NSString * description;
-CGFloat x;
-CGFloat y;
+{
+    NSString * name;
+    NSString * description;
+    CGFloat x;
+    CGFloat y;
+}
 
 - (id) initName: (NSString *) itemName andDescription: (NSString *) itemDescription andX: (CGFloat) itemX andY: (CGFloat) itemY
 {

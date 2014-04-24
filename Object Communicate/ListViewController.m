@@ -15,7 +15,8 @@
 
 @implementation ListViewController
 
-UIScrollView * itemArea;
+//UIScrollView * itemArea;
+UITableView * itemArea;
 NSMutableArray * items;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -65,14 +66,18 @@ NSMutableArray * items;
 
 - (void) initArea
 {
-    items = [[NSMutableArray alloc] init];
-    
-    UILabel * head = [[UILabel alloc] initWithFrame: CGRectMake(0.0f, 0.0f, [[UIScreen mainScreen] bounds].size.width, 0.0f)];
-    [items addObject: head];
-    
-    itemArea = [[UIScrollView alloc] initWithFrame: CGRectMake(0.0f, [[UIScreen mainScreen] bounds].size.height / 10.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 1.25)];
-    [itemArea setBackgroundColor: [UIColor cyanColor]];
-    [itemArea setScrollEnabled: true];
+//    items = [[NSMutableArray alloc] init];
+//    
+//    // head is only placement for first time adding, dummy object for later referencing
+//    UILabel * head = [[UILabel alloc] initWithFrame: CGRectMake(0.0f, -[[UIScreen mainScreen] bounds].size.height / 10, [[UIScreen mainScreen] bounds].size.width, 0.0f)];
+//    [items addObject: head];
+//    
+//    // setup the scroll view
+//    itemArea = [[UIScrollView alloc] initWithFrame: CGRectMake(0.0f, [[UIScreen mainScreen] bounds].size.height / 10.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 1.25)];
+//    [itemArea setBackgroundColor: [UIColor cyanColor]];
+//    [itemArea setScrollEnabled: true];
+//    [self.view addSubview: itemArea];
+    itemArea = [[UITableView alloc] initWithFrame: CGRectMake(0.0f, [[UIScreen mainScreen] bounds].size.height / 10.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 1.25) style: UITableViewStylePlain];
     [self.view addSubview: itemArea];
 }
 
@@ -81,14 +86,20 @@ NSMutableArray * items;
  */
 - (void) initItem: (Item *) item
 {
-    UILabel * label = [[UILabel alloc] initWithFrame: CGRectMake(0.0, ((UILabel *) [items lastObject]).frame.origin.y + [[UIScreen mainScreen] bounds].size.height / 10.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
-    [[label layer] setBorderWidth: 1.0f];
-    [label setText: [item getName]];
-    [items addObject: label];
-    [itemArea addSubview: label];
-//    [item getDescription];
-//    [item getX];
-//    [item getY];
+    UITableViewCell * cell = [[UITableViewCell alloc] init];
+//    UIView * label = [[UIView alloc] initWithFrame: CGRectMake(0.0, ((UILabel *) [items lastObject]).frame.origin.y + [[UIScreen mainScreen] bounds].size.height / 10.0 + 1.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
+//    [[label layer] setBorderWidth: 1.0];
+//    UILabel * name = [[UILabel alloc] initWithFrame: CGRectMake(0.0, 0.0, [[UIScreen mainScreen] bounds].size.width / 1.25, [[UIScreen mainScreen] bounds].size.height / 20.0)];
+//    [name setText: [@"    " stringByAppendingString: [item getName]]];
+//    [name setFont: [UIFont fontWithName: @"Verdana" size: 12.0]];
+//    UILabel * description = [[UILabel alloc] initWithFrame: CGRectMake(0.0, [[UIScreen mainScreen] bounds].size.height / 20.0, [[UIScreen mainScreen] bounds].size.width / 1.25, [[UIScreen mainScreen] bounds].size.height / 20.0)];
+//    [description setText: [@"    " stringByAppendingString: [item getDescription]]];
+//    [description setFont: [UIFont fontWithName: @"Verdana" size: 9.0]];
+//    
+//    [label addSubview: name];
+//    [label addSubview: description];
+//    [items addObject: label];
+//    [itemArea addSubview: label];
 }
 
 /*
