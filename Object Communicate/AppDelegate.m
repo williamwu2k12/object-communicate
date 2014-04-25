@@ -18,13 +18,26 @@
     
     // initialize view controllers
     self.RVC = [[RootViewController alloc] init];
+    
+    // figure out how to put this somewhere else
     self.LVC = [[ListViewController alloc] init];
-    [[self.LVC tabBarItem] setTitle: @"Items"];
+    [[self.LVC tabBarItem] setTitle: @"List"];
     [[self.LVC tabBarItem] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName: @"Verdana" size: 20.0], NSFontAttributeName, nil] forState: UIControlStateNormal];
+    [[self.LVC tabBarItem] setTitlePositionAdjustment: UIOffsetMake(0, -12)];
+
+    
     self.MVC = [[MapViewController alloc] init];
     [[self.MVC tabBarItem] setTitle: @"Map"];
     [[self.MVC tabBarItem] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName: @"Verdana" size: 20.0], NSFontAttributeName, nil] forState: UIControlStateNormal];
-    [self.RVC setViewControllers: [NSArray arrayWithObjects: self.LVC, self.MVC, nil]];
+    [[self.MVC tabBarItem] setTitlePositionAdjustment: UIOffsetMake(0, -12)];
+    
+    self.IVC = [[ItemViewController alloc] init];
+    [[self.IVC tabBarItem] setTitle: @"Item"];
+    [[self.IVC tabBarItem] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName: @"Verdana" size: 20.0], NSFontAttributeName, nil] forState: UIControlStateNormal];
+    [[self.IVC tabBarItem] setTitlePositionAdjustment: UIOffsetMake(0, -12)];
+    
+    
+    [self.RVC setViewControllers: [NSArray arrayWithObjects: self.LVC, self.MVC, self.IVC, nil]];
     
     // set default (should be splash, temporarily the list view
 //    [self.window setRootViewController: self.LVC];

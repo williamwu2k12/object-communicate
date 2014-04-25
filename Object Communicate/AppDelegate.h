@@ -10,6 +10,7 @@
 #import "RootViewController.h"
 #import "ListViewController.h"
 #import "MapViewController.h"
+#import "ItemViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -18,5 +19,6 @@
 @property (strong, nonatomic) RootViewController * RVC;
 @property (strong, nonatomic) ListViewController * LVC;
 @property (strong, nonatomic) MapViewController * MVC;
+@property (strong, nonatomic) ItemViewController * IVC;
 
 @end
