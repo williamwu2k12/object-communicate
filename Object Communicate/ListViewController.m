@@ -117,8 +117,9 @@ NSMutableArray * items;
         Item * item = [items objectAtIndex: [indexPath row]];
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle: @"Item Clicked" message: [@"Go to MapViewController with coordinates: " stringByAppendingString: [NSString stringWithFormat: @"%f",[item getX]]] delegate: self cancelButtonTitle: @"Cancel" otherButtonTitles: nil];
         [alert show];
+        self.tabBarController.selectedIndex = 1;
     }
-    self.tabBarController.selectedIndex = 1;
+    [tableView deselectRowAtIndexPath: indexPath animated: YES];
 //    [itemTable beginUpdates];
 //    Item * newitem = [[Item alloc] initName: @"Test" andDescription: @"testing for shits and giggles" andX: 69.0 andY: 69.0];
 //    [self initItem: newitem];
@@ -170,8 +171,22 @@ NSMutableArray * items;
  */
 - (void) initOptions
 {
-    
+    UIButton * addButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    [addButton setTitle: @"+" forState: UIControlStateNormal];
+    [[addButton titleLabel] setFont: [UIFont fontWithName: @"Verdana" size: 25.0]];
+    [addButton setFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 10.0, 8.0 * [[UIScreen mainScreen] bounds].size.height / 10.0, 25.0, 25.0)];
+    [addButton addTarget: self action: @selector(doNothing) forControlEvents: UIControlEventTouchUpInside];
+    [self.view addSubview: addButton];
 }
+
+
+- (void) doNothing
+{
+    return;
+}
+
+
+
 
 
 /*

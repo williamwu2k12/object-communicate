@@ -13,6 +13,12 @@
 @end
 
 @implementation ItemViewController
+{
+    UILabel * name;
+    UILabel * description;
+    UIScrollView * statistics;
+    UIImageView * location;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
