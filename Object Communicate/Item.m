@@ -9,7 +9,6 @@
 #import "Item.h"
 
 @implementation Item
-
 {
     NSString * name;
     NSString * description;

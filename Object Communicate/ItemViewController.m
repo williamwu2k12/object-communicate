@@ -56,10 +56,10 @@
 // previous locations, etc.
 - (void) initStatistics
 {
-    NSLog(@"Last seen at this time");
-    NSLog(@"Battery low or high");
-    NSLog(@"Total time of use");
-    NSLog(@"Currently tracking");
+//    NSLog(@"Last seen at this time");
+//    NSLog(@"Battery low or high");
+//    NSLog(@"Total time of use");
+//    NSLog(@"Currently tracking");
 }
 
 - (void) initLocation
