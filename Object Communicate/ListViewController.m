@@ -70,12 +70,24 @@
  */
 - (void) initTitle
 {
-//    UILabel * label = [[UILabel alloc] initWithFrame: CGRectMake(0.0, [[UIScreen mainScreen] bounds].size.height / 50.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
-//    [label setFont: [UIFont fontWithName: @"Verdana" size: 18.0f]];
-//    [label setText: @"William's Tracked Items"];
-//    [label setTextAlignment: NSTextAlignmentLeft];
-//    [label setContentMode: UIViewContentModeLeft];
-//    [self.view addSubview: label];
+    UILabel * title = [[UILabel alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, [[UIScreen mainScreen] bounds].size.height / 50.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
+    [title setFont: [UIFont fontWithName: @"Verdana" size: 18.0f]];
+    [title setText: @"Tracked Items"];
+    [title setTextAlignment: NSTextAlignmentLeft];
+    [title setContentMode: UIViewContentModeLeft];
+    [self.view addSubview: title];
+    
+    UIButton * addButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    [addButton setTitle: @"New" forState: UIControlStateNormal];
+    [[addButton titleLabel] setFont: [UIFont fontWithName: @"Verdana" size: 15.0]];
+    
+    [addButton setFrame: CGRectMake(8.5 * [[UIScreen mainScreen] bounds].size.width / 10.0, [[UIScreen mainScreen] bounds].size.height / 50.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
+    [addButton setContentHorizontalAlignment: UIControlContentHorizontalAlignmentLeft];
+    [addButton setContentVerticalAlignment: UIControlContentVerticalAlignmentCenter];
+    [[addButton titleLabel] setTextAlignment: NSTextAlignmentLeft];
+    [[addButton titleLabel] setContentMode: UIViewContentModeLeft];
+    [addButton addTarget: self action: @selector(goToNIVC) forControlEvents: UIControlEventTouchUpInside];
+    [self.view addSubview: addButton];
 }
 
 /*
@@ -169,53 +181,23 @@
 - (void) initItem: (Item *) item
 {
     [itemSource addObject: item];
-//    Item * item = [[Item alloc] init];
-//    [item setName: @"Test Item"];
-//    [item setDescription: @"example generic string description"];
-//    [item setLocationWithX: 600.0 andY: 900.0];
-//    [self initItem: item];
     [itemTable reloadData];
 }
-
-
 
 /*
  initialize the options view, this section will allow users to add an item, remove an item, change to other view controllers, etc.
  */
 - (void) initOptions
 {
-    UILabel * title = [[UILabel alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, [[UIScreen mainScreen] bounds].size.height / 50.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
-    [title setFont: [UIFont fontWithName: @"Verdana" size: 18.0f]];
-    [title setText: @"Tracked Items"];
-    [title setTextAlignment: NSTextAlignmentLeft];
-    [title setContentMode: UIViewContentModeLeft];
-    [self.view addSubview: title];
-    
-    UIButton * addButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    [addButton setTitle: @"New" forState: UIControlStateNormal];
-    [[addButton titleLabel] setFont: [UIFont fontWithName: @"Verdana" size: 15.0]];
-    
-    [addButton setFrame: CGRectMake(8.5 * [[UIScreen mainScreen] bounds].size.width / 10.0, [[UIScreen mainScreen] bounds].size.height / 50.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
-    [addButton setContentHorizontalAlignment: UIControlContentHorizontalAlignmentLeft];
-    [addButton setContentVerticalAlignment: UIControlContentVerticalAlignmentCenter];
-    [[addButton titleLabel] setTextAlignment: NSTextAlignmentLeft];
-    [[addButton titleLabel] setContentMode: UIViewContentModeLeft];
-    [addButton addTarget: self action: @selector(doSomething) forControlEvents: UIControlEventTouchUpInside];
-    [self.view addSubview: addButton];
+
 }
 
-- (void) doSomething
+/*
+ switch view controller to a temporary view controller, the new item view controller, to allow the user to specify what item characteristics to add
+ */
+- (void) goToNIVC
 {
-
     [[appDelegate window] setRootViewController: [appDelegate NIVC]];
-    
-    
-//    self.tabBarController.selectedIndex = 2;
-}
-
-- (void) doNothing
-{
-    return;
 }
 
 

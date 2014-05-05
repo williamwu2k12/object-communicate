@@ -48,14 +48,18 @@
 
 - (void) initTextFields
 {
-    name = [[UITextField alloc] initWithFrame: CGRectMake(0.0, 30.0, [[UIScreen mainScreen] bounds].size.width, 30.0)];
+    name = [[UITextField alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, [[UIScreen mainScreen] bounds].size.height / 20.0, 9.0 * [[UIScreen mainScreen] bounds].size.width / 10.0, 30.0)];
+    [name setText: @"name"];
     [[name layer] setBorderWidth: 1.0];
-    description = [[UITextField alloc] initWithFrame: CGRectMake(0.0, 70.0, [[UIScreen mainScreen] bounds].size.width, 30.0)];
+    description = [[UITextField alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, 2.5 * [[UIScreen mainScreen] bounds].size.height / 20.0, 9.0 * [[UIScreen mainScreen] bounds].size.width / 10.0, 30.0)];
     [[description layer] setBorderWidth: 1.0];
-    locationX = [[UITextField alloc] initWithFrame: CGRectMake(0.0, 110.0, [[UIScreen mainScreen] bounds].size.width, 30.0)];
+    [description setText: @"description"];
+    locationX = [[UITextField alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, 4.0 * [[UIScreen mainScreen] bounds].size.height / 20.0, 9.0 * [[UIScreen mainScreen] bounds].size.width / 10.0, 30.0)];
     [[locationX layer] setBorderWidth: 1.0];
-    locationY = [[UITextField alloc] initWithFrame: CGRectMake(0.0, 150.0, [[UIScreen mainScreen] bounds].size.width, 30.0)];
+    [locationX setText: @"x position"];
+    locationY = [[UITextField alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, 5.5 * [[UIScreen mainScreen] bounds].size.height / 20.0, 9.0 * [[UIScreen mainScreen] bounds].size.width / 10.0, 30.0)];
     [[locationY layer] setBorderWidth: 1.0];
+    [locationY setText: @"y position"];
     
     [self.view addSubview: name];
     [self.view addSubview: description];
@@ -66,7 +70,7 @@
 - (void) initSubmit
 {
     submit = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    [submit setFrame: CGRectMake(0.0, 190.0, 60.0, 30.0)];
+    [submit setFrame: CGRectMake(7.5 * [[UIScreen mainScreen] bounds].size.width / 10.0, 7.0 * [[UIScreen mainScreen] bounds].size.height / 20.0, 60.0, 30.0)];
     [submit setTitle: @"Submit" forState: UIControlStateNormal];
     [submit addTarget: self action: @selector(submitAction) forControlEvents: UIControlEventTouchUpInside];
     [self.view addSubview: submit];
@@ -75,15 +79,10 @@
 - (void) initCancel
 {
     cancel = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    [cancel setFrame: CGRectMake(0.0, 220.0, 60.0, 30.0)];
+    [cancel setFrame: CGRectMake(0.5 * [[UIScreen mainScreen] bounds].size.width / 10.0, 7.0 * [[UIScreen mainScreen] bounds].size.height / 20.0, 60.0, 30.0)];
     [cancel setTitle: @"Cancel" forState: UIControlStateNormal];
     [cancel addTarget: self action: @selector(cancelAction) forControlEvents: UIControlEventTouchUpInside];
     [self.view addSubview: cancel];
-}
-
-- (void) cancelAction
-{
-    [[appDelegate window] setRootViewController: [appDelegate RVC]];
 }
 
 - (void) submitAction
@@ -96,6 +95,11 @@
     }
     Item * item = [[Item alloc] initName: [name text] andDescription: [description text] andX: (CGFloat) [[locationX text] integerValue] andY: (CGFloat) [[locationY text] integerValue]];
     [(ListViewController *) [[[appDelegate RVC] viewControllers] objectAtIndex: 0] initItem: item];
+    [[appDelegate window] setRootViewController: [appDelegate RVC]];
+}
+
+- (void) cancelAction
+{
     [[appDelegate window] setRootViewController: [appDelegate RVC]];
 }
 
