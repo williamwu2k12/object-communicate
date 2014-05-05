@@ -49,17 +49,24 @@
 - (void) initTextFields
 {
     name = [[UITextField alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, [[UIScreen mainScreen] bounds].size.height / 20.0, 9.0 * [[UIScreen mainScreen] bounds].size.width / 10.0, 30.0)];
-    [name setText: @"name"];
-    [[name layer] setBorderWidth: 1.0];
     description = [[UITextField alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, 2.5 * [[UIScreen mainScreen] bounds].size.height / 20.0, 9.0 * [[UIScreen mainScreen] bounds].size.width / 10.0, 30.0)];
-    [[description layer] setBorderWidth: 1.0];
-    [description setText: @"description"];
     locationX = [[UITextField alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, 4.0 * [[UIScreen mainScreen] bounds].size.height / 20.0, 9.0 * [[UIScreen mainScreen] bounds].size.width / 10.0, 30.0)];
-    [[locationX layer] setBorderWidth: 1.0];
-    [locationX setText: @"x position"];
     locationY = [[UITextField alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, 5.5 * [[UIScreen mainScreen] bounds].size.height / 20.0, 9.0 * [[UIScreen mainScreen] bounds].size.width / 10.0, 30.0)];
+    
+    [[name layer] setBorderWidth: 1.0];
+    [[description layer] setBorderWidth: 1.0];
+    [[locationX layer] setBorderWidth: 1.0];
     [[locationY layer] setBorderWidth: 1.0];
+    
+    [name setText: @"name"];
+    [description setText: @"description"];
+    [locationX setText: @"x position"];
     [locationY setText: @"y position"];
+    
+    [name setFont: [UIFont fontWithName: @"Verdana" size: 12.0]];
+    [description setFont: [UIFont fontWithName: @"Verdana" size: 12.0]];
+    [locationX setFont: [UIFont fontWithName: @"Verdana" size: 12.0]];
+    [locationY setFont: [UIFont fontWithName: @"Verdana" size: 12.0]];
     
     [self.view addSubview: name];
     [self.view addSubview: description];

@@ -35,7 +35,7 @@
     [self initTab];
     
     [self initMap];
-    [self goToPlace];
+    [self goToPlace]; // replace this with location of item in future
 }
 
 - (void) initTab
@@ -52,9 +52,15 @@
 
 - (void) goToPlace
 {
-    CLLocationCoordinate2D coordinate = {latitude: 61.2180556, longitude: -149.9002778};
-    MKCoordinateSpan span = {latitudeDelta: 0.2, longitudeDelta: 0.2};
-    MKCoordinateRegion region = {coordinate, span};
+    CLLocationCoordinate2D coordinate;
+    coordinate.latitude = 37.8633232; // clark kerr coordinates
+    coordinate.longitude = -122.24989010000002;
+    MKCoordinateSpan span;
+    span.latitudeDelta = 0.2;
+    span.longitudeDelta = 0.2;
+    MKCoordinateRegion region;
+    region.center = coordinate;
+    region.span = span;
 
     [map setRegion: region animated: YES];
 }
