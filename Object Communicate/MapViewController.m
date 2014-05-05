@@ -7,12 +7,17 @@
 //
 
 #import "MapViewController.h"
+#import "UIKit/UIKit.h"
+#import "MapKit/MapKit.h"
 
 @interface MapViewController ()
 
 @end
 
 @implementation MapViewController
+{
+    MKMapView * map;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,15 +33,30 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self initTab];
-    UILabel * test = [[UILabel alloc] initWithFrame: CGRectMake(0.0, 100.0, [[UIScreen mainScreen] bounds].size.width, 100.0)];
-    [test setText: @"THIS SHOULD BE THE MAP"];
-    [test setTextAlignment: NSTextAlignmentCenter];
-    [self.view addSubview: test];
+    
+    [self initMap];
+    [self goToPlace];
 }
 
 - (void) initTab
 {
 
+}
+
+- (void) initMap
+{
+    map = [[MKMapView alloc] initWithFrame: self.view.frame];
+    [self.view addSubview: map];
+    // initialize hybrid, traffic, etc.
+}
+
+- (void) goToPlace
+{
+    CLLocationCoordinate2D coordinate = {latitude: 61.2180556, longitude: -149.9002778};
+    MKCoordinateSpan span = {latitudeDelta: 0.2, longitudeDelta: 0.2};
+    MKCoordinateRegion region = {coordinate, span};
+
+    [map setRegion: region animated: YES];
 }
 
 - (void)didReceiveMemoryWarning
