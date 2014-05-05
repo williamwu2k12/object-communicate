@@ -1,24 +1,18 @@
 //
-//  ItemViewController.m
+//  LoginViewController.m
 //  Object Communicate
 //
-//  Created by William Wu on 4/25/14.
+//  Created by William Wu on 5/4/14.
 //  Copyright (c) 2014 William Wu. All rights reserved.
 //
 
-#import "ItemViewController.h"
+#import "LoginViewController.h"
 
-@interface ItemViewController ()
+@interface LoginViewController ()
 
 @end
 
-@implementation ItemViewController
-{
-    UILabel * name;
-    UILabel * description;
-    UIScrollView * statistics;
-    UIImageView * location;
-}
+@implementation LoginViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,47 +27,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self initTab];
-    [self initName];
-    [self initDescription];
-    [self initStatistics];
-    [self initLocation];
 }
-
-- (void) initTab
-{
-
-}
-
-
-
-- (void) initName
-{
-    
-}
-
-- (void) initDescription
-{
-    
-}
-
-// previous locations, etc.
-- (void) initStatistics
-{
-//    NSLog(@"Last seen at this time");
-//    NSLog(@"Battery low or high");
-//    NSLog(@"Total time of use");
-//    NSLog(@"Currently tracking");
-}
-
-- (void) initLocation
-{
-    
-}
-
-
-
-
 
 - (void)didReceiveMemoryWarning
 {

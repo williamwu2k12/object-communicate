@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Item.h"
 
-@interface ListViewController : UIViewController
+@interface ListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+
+- (void) initItem: (Item *) item;
 
 @end

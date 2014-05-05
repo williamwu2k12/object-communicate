@@ -22,9 +22,10 @@
 		3D887C3318FF6EDD00F2A9F1 /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C3218FF6EDD00F2A9F1 /* ListViewController.m */; };
 		3D887C3618FF800900F2A9F1 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C3518FF800900F2A9F1 /* MapViewController.m */; };
 		3D887C391903444300F2A9F1 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C381903444200F2A9F1 /* Item.m */; };
-		3D887C3C19086EBE00F2A9F1 /* ItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C3B19086EBE00F2A9F1 /* ItemView.m */; };
 		3D887C421909205400F2A9F1 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C411909205400F2A9F1 /* RootViewController.m */; };
 		3D887C45190A7CF100F2A9F1 /* ItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C44190A7CF100F2A9F1 /* ItemViewController.m */; };
+		3D887C481917329000F2A9F1 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C471917329000F2A9F1 /* LoginViewController.m */; };
+		3D887C4B19174C7F00F2A9F1 /* NewItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C4A19174C7F00F2A9F1 /* NewItemViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,12 +61,14 @@
 		3D887C3518FF800900F2A9F1 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		3D887C371903444200F2A9F1 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		3D887C381903444200F2A9F1 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
-		3D887C3A19086EBE00F2A9F1 /* ItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemView.h; sourceTree = "<group>"; };
-		3D887C3B19086EBE00F2A9F1 /* ItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemView.m; sourceTree = "<group>"; };
 		3D887C401909205400F2A9F1 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		3D887C411909205400F2A9F1 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		3D887C43190A7CF100F2A9F1 /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
 		3D887C44190A7CF100F2A9F1 /* ItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
+		3D887C461917329000F2A9F1 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		3D887C471917329000F2A9F1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		3D887C4919174C7F00F2A9F1 /* NewItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewItemViewController.h; sourceTree = "<group>"; };
+		3D887C4A19174C7F00F2A9F1 /* NewItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewItemViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,16 +132,18 @@
 				3D887C1218FF6D5400F2A9F1 /* AppDelegate.m */,
 				3D887C1418FF6D5400F2A9F1 /* Images.xcassets */,
 				3D887C0918FF6D5400F2A9F1 /* Supporting Files */,
-				3D887C3118FF6EDD00F2A9F1 /* ListViewController.h */,
-				3D887C3218FF6EDD00F2A9F1 /* ListViewController.m */,
 				3D887C401909205400F2A9F1 /* RootViewController.h */,
 				3D887C411909205400F2A9F1 /* RootViewController.m */,
+				3D887C461917329000F2A9F1 /* LoginViewController.h */,
+				3D887C471917329000F2A9F1 /* LoginViewController.m */,
+				3D887C3118FF6EDD00F2A9F1 /* ListViewController.h */,
+				3D887C3218FF6EDD00F2A9F1 /* ListViewController.m */,
+				3D887C4919174C7F00F2A9F1 /* NewItemViewController.h */,
+				3D887C4A19174C7F00F2A9F1 /* NewItemViewController.m */,
 				3D887C43190A7CF100F2A9F1 /* ItemViewController.h */,
 				3D887C44190A7CF100F2A9F1 /* ItemViewController.m */,
 				3D887C3418FF800900F2A9F1 /* MapViewController.h */,
 				3D887C3518FF800900F2A9F1 /* MapViewController.m */,
-				3D887C3A19086EBE00F2A9F1 /* ItemView.h */,
-				3D887C3B19086EBE00F2A9F1 /* ItemView.m */,
 				3D887C371903444200F2A9F1 /* Item.h */,
 				3D887C381903444200F2A9F1 /* Item.m */,
 			);
@@ -269,12 +274,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D887C481917329000F2A9F1 /* LoginViewController.m in Sources */,
 				3D887C391903444300F2A9F1 /* Item.m in Sources */,
 				3D887C421909205400F2A9F1 /* RootViewController.m in Sources */,
 				3D887C1318FF6D5400F2A9F1 /* AppDelegate.m in Sources */,
 				3D887C0F18FF6D5400F2A9F1 /* main.m in Sources */,
-				3D887C3C19086EBE00F2A9F1 /* ItemView.m in Sources */,
 				3D887C45190A7CF100F2A9F1 /* ItemViewController.m in Sources */,
+				3D887C4B19174C7F00F2A9F1 /* NewItemViewController.m in Sources */,
 				3D887C3318FF6EDD00F2A9F1 /* ListViewController.m in Sources */,
 				3D887C3618FF800900F2A9F1 /* MapViewController.m in Sources */,
 			);

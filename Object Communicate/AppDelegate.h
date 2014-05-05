@@ -11,6 +11,7 @@
 #import "ListViewController.h"
 #import "MapViewController.h"
 #import "ItemViewController.h"
+#import "NewItemViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
@@ -20,5 +21,6 @@
 @property (strong, nonatomic) ListViewController * LVC;
 @property (strong, nonatomic) MapViewController * MVC;
 @property (strong, nonatomic) ItemViewController * IVC;
+@property (strong, nonatomic) NewItemViewController * NIVC;
 
 @end

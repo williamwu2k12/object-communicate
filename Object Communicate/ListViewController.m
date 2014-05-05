@@ -8,6 +8,7 @@
 
 #import "ListViewController.h"
 #import "Item.h"
+#import "AppDelegate.h"
 
 @interface ListViewController ()
 
@@ -17,6 +18,7 @@
 {
     UITableView * itemTable;
     NSMutableArray * itemSource;
+    AppDelegate * appDelegate;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -32,6 +34,10 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    [self initTab];
+    
     [self initTitle];
     [self initArea];
 
@@ -52,16 +58,24 @@
 
 
 /*
+ initializes the tab bar item with the correct font and offset
+ */
+- (void) initTab
+{
+
+}
+
+/*
  initialize the title view, probably a label, with its own section and background
  */
 - (void) initTitle
 {
-    UILabel * label = [[UILabel alloc] initWithFrame: CGRectMake(0.0, [[UIScreen mainScreen] bounds].size.height / 50.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
-    [label setFont: [UIFont fontWithName: @"Verdana" size: 20.0f]];
-    [label setText: @"William's Tracked Items"];
-    [label setTextAlignment: NSTextAlignmentCenter];
-    [label setContentMode: UIViewContentModeCenter];
-    [self.view addSubview: label];
+//    UILabel * label = [[UILabel alloc] initWithFrame: CGRectMake(0.0, [[UIScreen mainScreen] bounds].size.height / 50.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
+//    [label setFont: [UIFont fontWithName: @"Verdana" size: 18.0f]];
+//    [label setText: @"William's Tracked Items"];
+//    [label setTextAlignment: NSTextAlignmentLeft];
+//    [label setContentMode: UIViewContentModeLeft];
+//    [self.view addSubview: label];
 }
 
 /*
@@ -104,7 +118,7 @@
         [[cell textLabel] setText: [item getName]];
         [[cell textLabel] setFont: [UIFont fontWithName: @"Verdana" size: 12.0]];
         [[cell detailTextLabel] setText: [item getDescription]];
-        [[cell detailTextLabel] setFont: [UIFont fontWithName: @"Verdana" size: 9.0]];
+        [[cell detailTextLabel] setFont: [UIFont fontWithName: @"Verdana-Italic" size: 9.0]];
     }
     return cell;
 }
@@ -155,6 +169,12 @@
 - (void) initItem: (Item *) item
 {
     [itemSource addObject: item];
+//    Item * item = [[Item alloc] init];
+//    [item setName: @"Test Item"];
+//    [item setDescription: @"example generic string description"];
+//    [item setLocationWithX: 600.0 andY: 900.0];
+//    [self initItem: item];
+    [itemTable reloadData];
 }
 
 
@@ -164,22 +184,32 @@
  */
 - (void) initOptions
 {
+    UILabel * title = [[UILabel alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, [[UIScreen mainScreen] bounds].size.height / 50.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
+    [title setFont: [UIFont fontWithName: @"Verdana" size: 18.0f]];
+    [title setText: @"Tracked Items"];
+    [title setTextAlignment: NSTextAlignmentLeft];
+    [title setContentMode: UIViewContentModeLeft];
+    [self.view addSubview: title];
+    
     UIButton * addButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    [addButton setTitle: @"+" forState: UIControlStateNormal];
-    [[addButton titleLabel] setFont: [UIFont fontWithName: @"Verdana" size: 25.0]];
-    [addButton setFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 10.0, 8.0 * [[UIScreen mainScreen] bounds].size.height / 10.0, 25.0, 25.0)];
+    [addButton setTitle: @"New" forState: UIControlStateNormal];
+    [[addButton titleLabel] setFont: [UIFont fontWithName: @"Verdana" size: 15.0]];
+    
+    [addButton setFrame: CGRectMake(8.5 * [[UIScreen mainScreen] bounds].size.width / 10.0, [[UIScreen mainScreen] bounds].size.height / 50.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
+    [addButton setContentHorizontalAlignment: UIControlContentHorizontalAlignmentLeft];
+    [addButton setContentVerticalAlignment: UIControlContentVerticalAlignmentCenter];
+    [[addButton titleLabel] setTextAlignment: NSTextAlignmentLeft];
+    [[addButton titleLabel] setContentMode: UIViewContentModeLeft];
     [addButton addTarget: self action: @selector(doSomething) forControlEvents: UIControlEventTouchUpInside];
     [self.view addSubview: addButton];
 }
 
 - (void) doSomething
 {
-    Item * item = [[Item alloc] init];
-    [item setName: @"Test Item"];
-    [item setDescription: @"example generic string description"];
-    [item setLocationWithX: 600.0 andY: 900.0];
-    [self initItem: item];
-    [itemTable reloadData];
+
+    [[appDelegate window] setRootViewController: [appDelegate NIVC]];
+    
+    
 //    self.tabBarController.selectedIndex = 2;
 }
 

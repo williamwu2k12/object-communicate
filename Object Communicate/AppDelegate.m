@@ -17,34 +17,29 @@
     self.window.backgroundColor = [UIColor whiteColor];
     
     // initialize view controllers
-    self.RVC = [[RootViewController alloc] init];
-    
-    // figure out how to put this somewhere else
     self.LVC = [[ListViewController alloc] init];
-    [[self.LVC tabBarItem] setTitle: @"List"];
-    [[self.LVC tabBarItem] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName: @"Verdana" size: 20.0], NSFontAttributeName, nil] forState: UIControlStateNormal];
-    [[self.LVC tabBarItem] setTitlePositionAdjustment: UIOffsetMake(0, -12)];
-
-    
     self.MVC = [[MapViewController alloc] init];
-    [[self.MVC tabBarItem] setTitle: @"Map"];
-    [[self.MVC tabBarItem] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName: @"Verdana" size: 20.0], NSFontAttributeName, nil] forState: UIControlStateNormal];
-    [[self.MVC tabBarItem] setTitlePositionAdjustment: UIOffsetMake(0, -12)];
-    
     self.IVC = [[ItemViewController alloc] init];
-    [[self.IVC tabBarItem] setTitle: @"Item"];
-    [[self.IVC tabBarItem] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName: @"Verdana" size: 20.0], NSFontAttributeName, nil] forState: UIControlStateNormal];
-    [[self.IVC tabBarItem] setTitlePositionAdjustment: UIOffsetMake(0, -12)];
-    
-    
+    self.NIVC = [[NewItemViewController alloc] init];
+    self.RVC = [[RootViewController alloc] init];
     [self.RVC setViewControllers: [NSArray arrayWithObjects: self.LVC, self.MVC, self.IVC, nil]];
     
-    // set default (should be splash, temporarily the list view
-//    [self.window setRootViewController: self.LVC];
+    [self initViewController: self.LVC withName: @"List"];
+    [self initViewController: self.MVC withName: @"Map"];
+    [self initViewController: self.IVC withName: @"Item"];
+    
+//    set default (should be splash, then login, currently is temporarily the list view)
     [self.window setRootViewController: self.RVC];
     
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+- (void) initViewController: (UIViewController *) viewController withName: (NSString *) title
+{
+    [[viewController tabBarItem] setTitle: title];
+    [[viewController tabBarItem] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys: [UIFont fontWithName: @"Verdana" size: 20.0], NSFontAttributeName, nil] forState: UIControlStateNormal];
+    [[viewController tabBarItem] setTitlePositionAdjustment: UIOffsetMake(0.0, -12.0)];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

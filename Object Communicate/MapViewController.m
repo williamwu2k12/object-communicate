@@ -27,10 +27,16 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self initTab];
     UILabel * test = [[UILabel alloc] initWithFrame: CGRectMake(0.0, 100.0, [[UIScreen mainScreen] bounds].size.width, 100.0)];
     [test setText: @"THIS SHOULD BE THE MAP"];
     [test setTextAlignment: NSTextAlignmentCenter];
     [self.view addSubview: test];
+}
+
+- (void) initTab
+{
+
 }
 
 - (void)didReceiveMemoryWarning
