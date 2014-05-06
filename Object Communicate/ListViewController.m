@@ -18,6 +18,11 @@
 {
     UITableView * itemTable;
     NSMutableArray * itemSource;
+    
+    UILabel * title;
+    UIButton * addButton;
+    UISearchBar * search;
+    
     AppDelegate * appDelegate;
 }
 
@@ -36,10 +41,12 @@
     // Do any additional setup after loading the view.
     
     appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
-    [self initTab];
     
     [self initTitle];
-    [self initArea];
+    [self initAddButton];
+    [self initTable];
+    [self initSearch];
+    [self initTap];
 
     Item * item1 = [[Item alloc] initName: @"iPhone" andDescription: @"black iPhone with blue and green protective case" andX: 100.0 andY: 100.0];
     Item * item2 = [[Item alloc] initName: @"MacBook Pro" andDescription: @"13 inch apple computer with serial 123456789" andX: 600.0 andY: 900.0];
@@ -57,12 +64,29 @@
 }
 
 
-/*
- initializes the tab bar item with the correct font and offset
- */
-- (void) initTab
+- (void) initSearch
 {
+    search = [[UISearchBar alloc] initWithFrame: CGRectMake(0.0, 0.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 12.0)];
+    [search setSearchBarStyle: UISearchBarStyleMinimal];
+    [search setDelegate: self];
+    [itemTable setTableHeaderView: search];
+}
 
+- (void) initTap
+{
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(dismissKeyboard)];
+    [tap setCancelsTouchesInView: NO];
+    [self.view addGestureRecognizer: tap];
+}
+
+- (void) searchBarSearchButtonClicked: (UISearchBar *) searchBar
+{
+    [search resignFirstResponder];
+}
+
+- (void) dismissKeyboard
+{
+    [search resignFirstResponder];
 }
 
 /*
@@ -70,14 +94,17 @@
  */
 - (void) initTitle
 {
-    UILabel * title = [[UILabel alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, [[UIScreen mainScreen] bounds].size.height / 50.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
+    title = [[UILabel alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, [[UIScreen mainScreen] bounds].size.height / 50.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
     [title setFont: [UIFont fontWithName: @"Verdana" size: 18.0f]];
     [title setText: @"Tracked Items"];
     [title setTextAlignment: NSTextAlignmentLeft];
     [title setContentMode: UIViewContentModeLeft];
     [self.view addSubview: title];
-    
-    UIButton * addButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+}
+
+- (void) initAddButton
+{
+    addButton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
     [addButton setTitle: @"New" forState: UIControlStateNormal];
     [[addButton titleLabel] setFont: [UIFont fontWithName: @"Verdana" size: 15.0]];
     
@@ -93,13 +120,32 @@
 /*
  initialize the table view and its data source
  */
-- (void) initArea
+- (void) initTable
 {
     itemSource = [[NSMutableArray alloc] init];
-    itemTable = [[UITableView alloc] initWithFrame: CGRectMake(0.0f, [[UIScreen mainScreen] bounds].size.height / 10.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 1.25) style: UITableViewStylePlain];
+    itemTable = [[UITableView alloc] initWithFrame: CGRectMake(0.0, [[UIScreen mainScreen] bounds].size.height / 10.0, [[UIScreen mainScreen] bounds].size.width, 0.9 * [[UIScreen mainScreen] bounds].size.height) style: UITableViewStyleGrouped];
     [itemTable setDataSource: self];
     [itemTable setDelegate: self];
     [self.view addSubview: itemTable];
+}
+
+
+- (CGFloat) tableView: (UITableView *) tableView heightForHeaderInSection: (NSInteger) section
+{
+    if (section == 0)
+    {
+        return 25.0;
+    }
+    return 0.0;
+}
+
+- (NSString *) tableView: (UITableView *) tableView titleForHeaderInSection: (NSInteger) section
+{
+    if (section == 0)
+    {
+        return @"Online";
+    }
+    return @"Offline";
 }
 
 /*
@@ -107,7 +153,7 @@
  */
 - (NSInteger) numberOfSectionsInTableView: (UITableView *) tableView
 {
-    return 1;
+    return 2;
 }
 
 /*
@@ -115,6 +161,10 @@
  */
 - (NSInteger) tableView: (UITableView *) tableView numberOfRowsInSection: (NSInteger) section
 {
+    if (section == 0)
+    {
+        return [itemSource count];
+    }
     return 20;
 }
 
@@ -124,7 +174,7 @@
 - (UITableViewCell *) tableView: (UITableView *) tableView cellForRowAtIndexPath: (NSIndexPath *) indexPath
 {
     UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier: @"cell"];
-    if ([indexPath row] < [itemSource count])
+    if ([indexPath row] < [itemSource count] && [indexPath section] == 0)
     {
         Item * item = [itemSource objectAtIndex: [indexPath row]];
         [[cell textLabel] setText: [item getName]];

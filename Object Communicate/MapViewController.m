@@ -32,15 +32,9 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self initTab];
     
     [self initMap];
     [self goToPlace]; // replace this with location of item in future
-}
-
-- (void) initTab
-{
-
 }
 
 - (void) initMap

@@ -33,18 +33,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    [self initTab];
     [self initName];
     [self initDescription];
     [self initStatistics];
     [self initLocation];
 }
-
-- (void) initTab
-{
-
-}
-
 
 
 - (void) initName

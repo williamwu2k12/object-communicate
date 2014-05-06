@@ -41,6 +41,7 @@
     appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     
     [self initTextFields];
+    [self initTap];
     [self initSubmit];
     [self initCancel];
     // Do any additional setup after loading the view.
@@ -53,25 +54,36 @@
     locationX = [[UITextField alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, 4.0 * [[UIScreen mainScreen] bounds].size.height / 20.0, 9.0 * [[UIScreen mainScreen] bounds].size.width / 10.0, 30.0)];
     locationY = [[UITextField alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, 5.5 * [[UIScreen mainScreen] bounds].size.height / 20.0, 9.0 * [[UIScreen mainScreen] bounds].size.width / 10.0, 30.0)];
     
-    [[name layer] setBorderWidth: 1.0];
-    [[description layer] setBorderWidth: 1.0];
-    [[locationX layer] setBorderWidth: 1.0];
-    [[locationY layer] setBorderWidth: 1.0];
-    
-    [name setText: @"name"];
-    [description setText: @"description"];
-    [locationX setText: @"x position"];
-    [locationY setText: @"y position"];
-    
-    [name setFont: [UIFont fontWithName: @"Verdana" size: 12.0]];
-    [description setFont: [UIFont fontWithName: @"Verdana" size: 12.0]];
-    [locationX setFont: [UIFont fontWithName: @"Verdana" size: 12.0]];
-    [locationY setFont: [UIFont fontWithName: @"Verdana" size: 12.0]];
+    [self setText];
+    [self setAppearance: name];
+    [self setAppearance: description];
+    [self setAppearance: locationX];
+    [self setAppearance: locationY];
     
     [self.view addSubview: name];
     [self.view addSubview: description];
     [self.view addSubview: locationX];
     [self.view addSubview: locationY];
+}
+
+- (void) setText
+{
+    [name setText: @"name"];
+    [description setText: @"description"];
+    [locationX setText: @"x position"];
+    [locationY setText: @"y position"];
+}
+
+- (void) setAppearance: (UITextField *) textField
+{
+//    UIView * padding = [[UIView alloc] initWithFrame: CGRectMake(0.0, 0.0, 7.0, 7.0)];
+//    [textField setLeftView: padding];
+//    [textField setLeftViewMode: UITextFieldViewModeAlways];
+//    [[textField layer] setBorderWidth: 1.0];
+//    [textField setRightView: padding];
+//    [textField setRightViewMode: UITextFieldViewModeAlways];
+    [textField setBorderStyle: UITextBorderStyleRoundedRect];
+    [textField setFont: [UIFont fontWithName: @"Verdana" size: 12.0]];
 }
 
 - (void) initSubmit
@@ -92,6 +104,21 @@
     [self.view addSubview: cancel];
 }
 
+- (void) initTap
+{
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(dismissKeyboard)];
+    [tap setCancelsTouchesInView: NO];
+    [self.view addGestureRecognizer: tap];
+}
+
+- (void) dismissKeyboard
+{
+    [name resignFirstResponder];
+    [description resignFirstResponder];
+    [locationX resignFirstResponder];
+    [locationY resignFirstResponder];
+}
+
 - (void) submitAction
 {
     if ([name text] == [description text] && [name text] == [locationX text] && [name text] == [locationY text] && [[name text] isEqual: @""])
@@ -103,6 +130,7 @@
     Item * item = [[Item alloc] initName: [name text] andDescription: [description text] andX: (CGFloat) [[locationX text] integerValue] andY: (CGFloat) [[locationY text] integerValue]];
     [(ListViewController *) [[[appDelegate RVC] viewControllers] objectAtIndex: 0] initItem: item];
     [[appDelegate window] setRootViewController: [appDelegate RVC]];
+    [self setText];
 }
 
 - (void) cancelAction
