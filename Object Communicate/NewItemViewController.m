@@ -129,6 +129,7 @@
     }
     Item * item = [[Item alloc] initName: [name text] andDescription: [description text] andX: (CGFloat) [[locationX text] integerValue] andY: (CGFloat) [[locationY text] integerValue]];
     [(ListViewController *) [[[appDelegate RVC] viewControllers] objectAtIndex: 0] initItem: item];
+//    [(MapViewController *) [[[appDelegate RVC] viewControllers] objectAtIndex: 1] initPin: [item getName] withX: [item getX] withY: [item getY]];
     [[appDelegate window] setRootViewController: [appDelegate RVC]];
     [self setText];
 }

@@ -11,4 +11,6 @@
 
 @interface MapViewController : UIViewController <CLLocationManagerDelegate>
 
+- (void) initPin: (NSString *) name withX: (CGFloat) x withY: (CGFloat) y;
+
 @end

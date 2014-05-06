@@ -44,11 +44,20 @@
     [button setTitle: @"TESTING" forState: UIControlStateNormal];
     [button addTarget: self action: @selector(currentLocation) forControlEvents: UIControlEventTouchUpInside];
 //    [self.view addSubview: button];
+    
+//    CLLocationCoordinate2D coordinate;
+//    coordinate.latitude = 37.8633232; // clark kerr coordinates
+//    coordinate.longitude = -122.24989010000002;
+//    MKPointAnnotation * pin = [[MKPointAnnotation alloc] init];
+//    [pin setCoordinate: coordinate];
+//    [pin setTitle: @"Title"];
+//    [map addAnnotation: pin];
 }
 
 - (void) initMap
 {
-    map = [[MKMapView alloc] initWithFrame: self.view.frame];
+    map = [[MKMapView alloc] initWithFrame: CGRectMake(0.0, 0.1 * [[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, 0.9 * [[UIScreen mainScreen] bounds].size.height)];
+    [map setDelegate: (id) self];
     [self.view addSubview: map];
     // initialize hybrid, traffic, etc.
     maptype = [[UISegmentedControl alloc] initWithItems: [NSArray arrayWithObjects: @"Standard", @"Satellite", @"Hybrid", @"Terrain", nil]];
@@ -88,6 +97,25 @@
             break;
         }
     }
+}
+
+- (void) initPin: (NSString *) name withX: (CGFloat) x withY: (CGFloat) y
+{
+    CLLocationCoordinate2D coordinate;
+    coordinate.latitude = x;
+    coordinate.longitude = y;
+    MKPointAnnotation * point = [[MKPointAnnotation alloc] init];
+    [point setCoordinate: coordinate];
+    [point setTitle: name];
+    [map addAnnotation: point];
+}
+
+- (MKAnnotationView *) mapView: (MKMapView *) mapView viewForAnnotation: (id<MKAnnotation>) annotation
+{
+    MKPinAnnotationView * pinView = [[MKPinAnnotationView alloc] initWithAnnotation: annotation reuseIdentifier: @"pin"];
+    [pinView setAnimatesDrop: YES];
+    [pinView setCanShowCallout: YES];
+    return pinView;
 }
 
 - (void) initManager

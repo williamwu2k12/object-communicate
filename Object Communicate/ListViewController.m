@@ -48,12 +48,16 @@
     [self initSearch];
     [self initTap];
 
+    Item * item01 = [[Item alloc] initName: @"Clark Kerr Campus" andDescription: @"home of two years" andX:37.8633232 andY: -122.24989010000002];
+    Item * item0 = [[Item alloc] initName: @"Berkeley City" andDescription: @"homeeeee is where the heart is" andX: 37.864470 andY: -122.256706];
     Item * item1 = [[Item alloc] initName: @"iPhone" andDescription: @"black iPhone with blue and green protective case" andX: 100.0 andY: 100.0];
     Item * item2 = [[Item alloc] initName: @"MacBook Pro" andDescription: @"13 inch apple computer with serial 123456789" andX: 600.0 andY: 900.0];
     Item * item3 = [[Item alloc] initName: @"Backpack" andDescription: @"black schoolbag with 4 layers and 1 mesh water bottle holder" andX: 10.0 andY: 20.0];
     Item * item4 = [[Item alloc] initName: @"Textbook" andDescription: @"linear algebra and differential equations lays/nagles" andX: 1000.0 andY: 1000.0];
     Item * item5 = [[Item alloc] initName: @"Batteries" andDescription: @"aaa batteries, remember to bring for event" andX: 50.0 andY: 50.0];
     
+    [self initItem: item01];
+    [self initItem: item0];
     [self initItem: item1];
     [self initItem: item2];
     [self initItem: item3];
@@ -231,6 +235,7 @@
 - (void) initItem: (Item *) item
 {
     [itemSource addObject: item];
+    [(MapViewController *) [[[appDelegate RVC] viewControllers] objectAtIndex: 1] initPin: [item getName] withX: [item getX] withY: [item getY]];
     [itemTable reloadData];
 }
 
