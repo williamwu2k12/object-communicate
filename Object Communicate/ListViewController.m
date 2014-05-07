@@ -71,7 +71,7 @@
 - (void) initSearch
 {
     search = [[UISearchBar alloc] initWithFrame: CGRectMake(0.0, 0.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 12.0)];
-    [search setSearchBarStyle: UISearchBarStyleMinimal];
+//    [search setSearchBarStyle: UISearchBarStyleMinimal];
     [search setDelegate: self];
     [itemTable setTableHeaderView: search];
 }
