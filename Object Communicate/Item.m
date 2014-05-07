@@ -14,6 +14,7 @@
     NSString * description;
     double x;
     double y;
+    UIImage * image;
 }
 
 - (id) initName: (NSString *) itemName andDescription: (NSString *) itemDescription andX: (double) itemX andY: (double) itemY

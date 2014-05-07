@@ -41,13 +41,16 @@
     [self initManager];
     [self goToPlace]; // replace this with location of item in future
 
+    // load all the previously existing items
     NSMutableArray * itemSource = [[appDelegate LVC] getItemSource];
     for (int i = 0; i < [itemSource count]; i++)
     {
         [self initPin: (Item *) [itemSource objectAtIndex: i]];
     }
+    
+    // testing
     UIButton * button = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    [button setFrame: CGRectMake(0.0, 30.0, 50.0, 50.0)];
+    [button setFrame: CGRectMake(0.0, 20.0, 80.0, 60.0)];
     [button setTitle: @"TESTING" forState: UIControlStateNormal];
     [button addTarget: self action: @selector(currentLocation) forControlEvents: UIControlEventTouchUpInside];
     [self.view addSubview: button];
