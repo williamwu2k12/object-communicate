@@ -20,16 +20,19 @@
     self.LVC = [[ListViewController alloc] init];
     self.MVC = [[MapViewController alloc] init];
     self.IVC = [[ItemViewController alloc] init];
+    self.LIVC = [[LoginViewController alloc] init];
     self.NIVC = [[NewItemViewController alloc] init];
     self.RVC = [[RootViewController alloc] init];
     [self.RVC setViewControllers: [NSArray arrayWithObjects: self.LVC, self.MVC, self.IVC, nil]];
+    [self.RVC setDelegate: (id) self];
     
     [self initViewController: self.LVC withName: @"List"];
     [self initViewController: self.MVC withName: @"Map"];
     [self initViewController: self.IVC withName: @"Item"];
     
 //    set default (should be splash, then login, currently is temporarily the list view)
-    [self.window setRootViewController: self.RVC];
+    [self.window setRootViewController: self.LIVC];
+//    [self.window setRootViewController: self.RVC];
     
     [self.window makeKeyAndVisible];
     return YES;

@@ -46,19 +46,20 @@
     {
         [self initPin: (Item *) [itemSource objectAtIndex: i]];
     }
-//    UIButton * button = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-//    [button setFrame: CGRectMake(0.0, 30.0, 50.0, 50.0)];
-//    [button setTitle: @"TESTING" forState: UIControlStateNormal];
-//    [button addTarget: self action: @selector(currentLocation) forControlEvents: UIControlEventTouchUpInside];
-//    [self.view addSubview: button];
-    
-//    CLLocationCoordinate2D coordinate;
-//    coordinate.latitude = 37.8633232; // clark kerr coordinates
-//    coordinate.longitude = -122.24989010000002;
-//    MKPointAnnotation * pin = [[MKPointAnnotation alloc] init];
-//    [pin setCoordinate: coordinate];
-//    [pin setTitle: @"Title"];
-//    [map addAnnotation: pin];
+    UIButton * button = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+    [button setFrame: CGRectMake(0.0, 30.0, 50.0, 50.0)];
+    [button setTitle: @"TESTING" forState: UIControlStateNormal];
+    [button addTarget: self action: @selector(currentLocation) forControlEvents: UIControlEventTouchUpInside];
+    [self.view addSubview: button];
+}
+
+- (void) reloadPins
+{
+    NSMutableArray * itemSource = [[appDelegate LVC] getItemSource];
+    for (int i = 0; i < [itemSource count]; i++)
+    {
+        [self initPin: (Item *) [itemSource objectAtIndex: i]];
+    }
 }
 
 - (void) initMap
@@ -135,11 +136,11 @@
 - (void) goToPlace
 {
     CLLocationCoordinate2D coordinate;
-    coordinate.latitude = 37.8633232; // clark kerr coordinates
-    coordinate.longitude = -122.24989010000002;
+    coordinate.latitude = 37.866913;
+    coordinate.longitude = -122.254971;
     MKCoordinateSpan span;
-    span.latitudeDelta = 0.2;
-    span.longitudeDelta = 0.2;
+    span.latitudeDelta = 0.05;
+    span.longitudeDelta = 0.05;
     MKCoordinateRegion region;
     region.center = coordinate;
     region.span = span;
@@ -150,10 +151,8 @@
 - (void) currentLocation
 {
     CLLocationCoordinate2D coordinate;
-//    coordinate.latitude = manager.location.coordinate.latitude;
-//    coordinate.longitude = manager.location.coordinate.longitude;
-    coordinate.latitude = 37.8633232;
-    coordinate.longitude = -122.24989010000002;
+    coordinate.latitude = manager.location.coordinate.latitude;
+    coordinate.longitude = manager.location.coordinate.longitude;
     MKCoordinateSpan span;
     span.latitudeDelta = 0.2;
     span.longitudeDelta = 0.2;
@@ -164,7 +163,7 @@
     MKPointAnnotation * pin = [[MKPointAnnotation alloc] init];
     [pin setCoordinate: coordinate];
     [map addAnnotation: pin];
-//    [map setRegion: region animated: YES];
+    [map setRegion: region animated: YES];
 }
 
 - (void)didReceiveMemoryWarning

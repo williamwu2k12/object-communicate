@@ -7,12 +7,16 @@
 //
 
 #import "LoginViewController.h"
+#import "AppDelegate.h"
 
 @interface LoginViewController ()
 
 @end
 
 @implementation LoginViewController
+{
+    AppDelegate * appDelegate;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,8 +30,52 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UILabel * welcome = [[UILabel alloc] initWithFrame: CGRectMake(0.0, 0.3 * [[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, 0.1 * [[UIScreen mainScreen] bounds].size.height)];
+    [welcome setText: @"Welcome"];
+    [welcome setFont: [UIFont fontWithName: @"Verdana" size: 50.0]];
+    [welcome setTextAlignment: NSTextAlignmentCenter];
+    [self.view addSubview: welcome];
+    
+    appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget: self action: @selector(goToRVC)];
+    [self.view addGestureRecognizer: tap];
     // Do any additional setup after loading the view.
 }
+
+- (void) goToRVC
+{
+    [[appDelegate window] setRootViewController: [appDelegate RVC]];
+}
+
+
+
+
+- (BOOL) correctLogin: (NSString *) login andPassword: (NSString *) password
+{
+    return YES;
+}
+
+
+
+- (void) initTextFields
+{
+    // setup login field
+    // setup password field
+}
+
+- (void) initSubmit
+{
+    // setup submit button
+}
+
+- (void) initCreate
+{
+    // setup create an account button
+}
+
+
+
 
 - (void)didReceiveMemoryWarning
 {

@@ -56,19 +56,24 @@
     
     Item * item0 = [[Item alloc] initName: @"Clark Kerr Campus" andDescription: @"berkeley dormitories, home of two years" andX:37.8633232 andY: -122.24989010000002];
     Item * item1 = [[Item alloc] initName: @"2520 Hillegass Ave" andDescription: @"apartment complex next to people's park" andX: 37.864470 andY: -122.256706];
-    Item * item2 = [[Item alloc] initName: @"iPhone" andDescription: @"black iPhone with blue and green protective case" andX: 100.0 andY: 100.0];
-    Item * item3 = [[Item alloc] initName: @"MacBook Pro" andDescription: @"13 inch apple computer with serial 123456789" andX: 600.0 andY: 900.0];
-    Item * item4 = [[Item alloc] initName: @"Backpack" andDescription: @"black schoolbag with 4 layers and 1 mesh water bottle holder" andX: 10.0 andY: 20.0];
-    Item * item5 = [[Item alloc] initName: @"Textbook" andDescription: @"linear algebra and differential equations lays/nagles" andX: 1000.0 andY: 1000.0];
-    Item * item6 = [[Item alloc] initName: @"Batteries" andDescription: @"aaa batteries, remember to bring for event" andX: 50.0 andY: 50.0];
-    
-    [self initCell: item0];
-    [self initCell: item1];
-    [self initCell: item2];
-    [self initCell: item3];
-    [self initCell: item4];
-    [self initCell: item5];
-    [self initCell: item6];
+    Item * item2 = [[Item alloc] initName: @"iPhone" andDescription: @"black iPhone with blue and green protective case at Soda" andX: 37.875743 andY: -122.258732];
+    Item * item3 = [[Item alloc] initName: @"MacBook Pro" andDescription: @"13 inch apple computer with serial 123456789" andX: 37.866913 andY: -122.254971];
+    Item * item4 = [[Item alloc] initName: @"Backpack" andDescription: @"black schoolbag with 4 layers and 1 mesh water bottle holder" andX: 37.712569 andY: -122.219743];
+    Item * item5 = [[Item alloc] initName: @"Textbook" andDescription: @"linear algebra and differential equations lays/nagles" andX: 37.872173 andY: -122.267801];
+    Item * item6 = [[Item alloc] initName: @"Batteries" andDescription: @"aaa batteries, remember to bring for event" andX: 37.872062 andY: -122.257812];
+    [self initItem: item0];
+    [self initItem: item1];
+    [self initItem: item2];
+    [self initItem: item3];
+    [self initItem: item4];
+    [self initItem: item5];
+    [self initItem: item6];
+}
+
+- (void) initItem: (Item *) item
+{
+    [[appDelegate LVC] initCell: item];
+    [[appDelegate MVC] initPin: item];
 }
 
 
@@ -244,7 +249,6 @@
 - (void) initCell: (Item *) item
 {
     [itemSource addObject: item];
-//    [(MapViewController *) [[[appDelegate RVC] viewControllers] objectAtIndex: 1] initPin: [item getName] withX: [item getX] withY: [item getY]];
     [itemTable reloadData];
 }
 

@@ -14,5 +14,6 @@
 @interface MapViewController : UIViewController <CLLocationManagerDelegate>
 
 - (void) initPin: (Item *) item;
+- (void) reloadPins;
 
 @end

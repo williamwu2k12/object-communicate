@@ -10,13 +10,13 @@
 
 @interface Item : NSObject
 
-- (id) initName: (NSString *) itemName andDescription: (NSString *) itemDescription andX: (CGFloat) itemX andY: (CGFloat) itemY;
+- (id) initName: (NSString *) itemName andDescription: (NSString *) itemDescription andX: (double) itemX andY: (double) itemY;
 - (void) setName: (NSString *) itemName;
 - (void) setDescription: (NSString *) itemDescription;
-- (void) setLocationWithX: (CGFloat) xPos andY: (CGFloat) yPos;
+- (void) setLocationWithX: (double) xPos andY: (double) yPos;
 - (NSString *) getName;
 - (NSString *) getDescription;
-- (CGFloat) getX;
-- (CGFloat) getY;
+- (double) getX;
+- (double) getY;
 
 @end

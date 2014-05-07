@@ -12,11 +12,11 @@
 {
     NSString * name;
     NSString * description;
-    CGFloat x;
-    CGFloat y;
+    double x;
+    double y;
 }
 
-- (id) initName: (NSString *) itemName andDescription: (NSString *) itemDescription andX: (CGFloat) itemX andY: (CGFloat) itemY
+- (id) initName: (NSString *) itemName andDescription: (NSString *) itemDescription andX: (double) itemX andY: (double) itemY
 {
     name = itemName;
     description = itemDescription;
@@ -35,7 +35,7 @@
     description = itemDescription;
 }
 
-- (void) setLocationWithX: (CGFloat) xPos andY: (CGFloat) yPos
+- (void) setLocationWithX: (double) xPos andY: (double) yPos
 {
     x = xPos;
     y = yPos;
@@ -51,12 +51,12 @@
     return description;
 }
 
-- (CGFloat) getX
+- (double) getX
 {
     return x;
 }
 
-- (CGFloat) getY
+- (double) getY
 {
     return y;
 }

@@ -31,6 +31,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
 }
 
 - (void)didReceiveMemoryWarning

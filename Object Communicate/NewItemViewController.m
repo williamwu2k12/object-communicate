@@ -160,9 +160,14 @@
         [alert show];
         return;
     }
-    Item * item = [[Item alloc] initName: [name text] andDescription: [description text] andX: (CGFloat) [[locationX text] integerValue] andY: (CGFloat) [[locationY text] integerValue]];
+    
+    // check if locationX and locationY are doubles or whether there are letters (no letters allowed)
+    
+    
+    Item * item = [[Item alloc] initName: [name text] andDescription: [description text] andX: [[locationX text] doubleValue] andY: [[locationY text] doubleValue]];
     [[appDelegate LVC] initCell: item];
     [[appDelegate MVC] initPin: item];
+    
     [[appDelegate window] setRootViewController: [appDelegate RVC]];
     [self setText];
 }
