@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "MapKit/MapKit.h"
+#import "Item.h"
 
 @interface MapViewController : UIViewController <CLLocationManagerDelegate>
 
-- (void) initPin: (NSString *) name withX: (CGFloat) x withY: (CGFloat) y;
+- (void) initPin: (Item *) item;
 
 @end

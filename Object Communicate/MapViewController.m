@@ -7,9 +7,7 @@
 //
 
 #import "MapViewController.h"
-#import "UIKit/UIKit.h"
-#import "MapKit/MapKit.h"
-#import "CoreLocation/CoreLocation.h"
+#import "AppDelegate.h"
 
 @interface MapViewController ()
 
@@ -20,6 +18,7 @@
     MKMapView * map;
     CLLocationManager * manager;
     UISegmentedControl * maptype;
+    AppDelegate * appDelegate;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -35,14 +34,22 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     
     [self initMap];
+    [self initMaptype];
     [self initManager];
     [self goToPlace]; // replace this with location of item in future
-    UIButton * button = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    [button setFrame: CGRectMake(0.0, 30.0, 50.0, 50.0)];
-    [button setTitle: @"TESTING" forState: UIControlStateNormal];
-    [button addTarget: self action: @selector(currentLocation) forControlEvents: UIControlEventTouchUpInside];
+
+    NSMutableArray * itemSource = [[appDelegate LVC] getItemSource];
+    for (int i = 0; i < [itemSource count]; i++)
+    {
+        [self initPin: (Item *) [itemSource objectAtIndex: i]];
+    }
+//    UIButton * button = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+//    [button setFrame: CGRectMake(0.0, 30.0, 50.0, 50.0)];
+//    [button setTitle: @"TESTING" forState: UIControlStateNormal];
+//    [button addTarget: self action: @selector(currentLocation) forControlEvents: UIControlEventTouchUpInside];
 //    [self.view addSubview: button];
     
 //    CLLocationCoordinate2D coordinate;
@@ -59,16 +66,17 @@
     map = [[MKMapView alloc] initWithFrame: CGRectMake(0.0, 0.1 * [[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, 0.9 * [[UIScreen mainScreen] bounds].size.height)];
     [map setDelegate: (id) self];
     [self.view addSubview: map];
-    // initialize hybrid, traffic, etc.
+}
+
+- (void) initMaptype
+{
     maptype = [[UISegmentedControl alloc] initWithItems: [NSArray arrayWithObjects: @"Standard", @"Satellite", @"Hybrid", @"Terrain", nil]];
     [maptype setFrame: CGRectMake(0.35 * [[UIScreen mainScreen] bounds].size.width, 0.05 * [[UIScreen mainScreen] bounds].size.height, 0.6 * [[UIScreen mainScreen] bounds].size.width, 0.05 * [[UIScreen mainScreen] bounds].size.height)];
     [maptype setTitleTextAttributes: [NSDictionary dictionaryWithObject: [UIFont fontWithName: @"Verdana" size: 9.0] forKey: NSFontAttributeName] forState: UIControlStateNormal];
-//    [maptype setBackgroundColor: [UIColor lightGrayColor]];
-//    [[maptype layer] setBorderColor: [[UIColor blackColor] CGColor]];
     [maptype setTintColor: [UIColor blackColor]];
+    
     [maptype addTarget: self action: @selector(changeMaptype) forControlEvents: UIControlEventValueChanged];
     [maptype setSelectedSegmentIndex: 0];
-    
     [self.view addSubview: maptype];
 }
 
@@ -99,23 +107,15 @@
     }
 }
 
-- (void) initPin: (NSString *) name withX: (CGFloat) x withY: (CGFloat) y
+- (void) initPin: (Item *) item
 {
     CLLocationCoordinate2D coordinate;
-    coordinate.latitude = x;
-    coordinate.longitude = y;
+    coordinate.latitude = [item getX];
+    coordinate.longitude = [item getY];
     MKPointAnnotation * point = [[MKPointAnnotation alloc] init];
     [point setCoordinate: coordinate];
-    [point setTitle: name];
+    [point setTitle: [item getName]];
     [map addAnnotation: point];
-}
-
-- (MKAnnotationView *) mapView: (MKMapView *) mapView viewForAnnotation: (id<MKAnnotation>) annotation
-{
-    MKPinAnnotationView * pinView = [[MKPinAnnotationView alloc] initWithAnnotation: annotation reuseIdentifier: @"pin"];
-    [pinView setAnimatesDrop: YES];
-    [pinView setCanShowCallout: YES];
-    return pinView;
 }
 
 - (void) initManager
@@ -126,6 +126,11 @@
     [manager setDesiredAccuracy: kCLLocationAccuracyBest];
     [manager startUpdatingLocation];
 }
+
+
+
+
+
 
 - (void) goToPlace
 {
@@ -145,8 +150,10 @@
 - (void) currentLocation
 {
     CLLocationCoordinate2D coordinate;
-    coordinate.latitude = manager.location.coordinate.latitude;
-    coordinate.longitude = manager.location.coordinate.longitude;
+//    coordinate.latitude = manager.location.coordinate.latitude;
+//    coordinate.longitude = manager.location.coordinate.longitude;
+    coordinate.latitude = 37.8633232;
+    coordinate.longitude = -122.24989010000002;
     MKCoordinateSpan span;
     span.latitudeDelta = 0.2;
     span.longitudeDelta = 0.2;
@@ -154,7 +161,10 @@
     region.center = coordinate;
     region.span = span;
     
-    [map setRegion: region animated: YES];
+    MKPointAnnotation * pin = [[MKPointAnnotation alloc] init];
+    [pin setCoordinate: coordinate];
+    [map addAnnotation: pin];
+//    [map setRegion: region animated: YES];
 }
 
 - (void)didReceiveMemoryWarning

@@ -7,12 +7,16 @@
 //
 
 #import "RootViewController.h"
+#import "AppDelegate.h"
 
 @interface RootViewController ()
 
 @end
 
 @implementation RootViewController
+{
+    AppDelegate * appDelegate;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

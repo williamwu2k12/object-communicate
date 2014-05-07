@@ -54,6 +54,11 @@
     locationX = [[UITextField alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, 4.0 * [[UIScreen mainScreen] bounds].size.height / 20.0, 9.0 * [[UIScreen mainScreen] bounds].size.width / 10.0, 30.0)];
     locationY = [[UITextField alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, 5.5 * [[UIScreen mainScreen] bounds].size.height / 20.0, 9.0 * [[UIScreen mainScreen] bounds].size.width / 10.0, 30.0)];
     
+    [name setDelegate: (id) self];
+    [description setDelegate: (id) self];
+    [locationX setDelegate: (id) self];
+    [locationY setDelegate: (id) self];
+    
     [self setText];
     [self setAppearance: name];
     [self setAppearance: description];
@@ -111,6 +116,34 @@
     [self.view addGestureRecognizer: tap];
 }
 
+- (void) textFieldDidBeginEditing: (UITextField *) textField
+{
+    if ([[textField text] isEqualToString: @"name"] || [[textField text] isEqualToString: @"description"] || [[textField text] isEqualToString: @"x position"] || [[textField text] isEqualToString: @"y position"])
+    {
+        [textField setText: @""];
+    }
+}
+
+- (void) textFieldDidEndEditing: (UITextField *) textField
+{
+    if ([[name text] isEqualToString: @""])
+    {
+        [name setText: @"name"];
+    }
+    if ([[description text] isEqualToString: @""])
+    {
+        [description setText: @"description"];
+    }
+    if ([[locationX text] isEqualToString: @""])
+    {
+        [locationX setText: @"x position"];
+    }
+    if ([[locationY text] isEqualToString: @""])
+    {
+        [locationY setText: @"y position"];
+    }
+}
+
 - (void) dismissKeyboard
 {
     [name resignFirstResponder];
@@ -128,8 +161,8 @@
         return;
     }
     Item * item = [[Item alloc] initName: [name text] andDescription: [description text] andX: (CGFloat) [[locationX text] integerValue] andY: (CGFloat) [[locationY text] integerValue]];
-    [(ListViewController *) [[[appDelegate RVC] viewControllers] objectAtIndex: 0] initItem: item];
-//    [(MapViewController *) [[[appDelegate RVC] viewControllers] objectAtIndex: 1] initPin: [item getName] withX: [item getX] withY: [item getY]];
+    [[appDelegate LVC] initCell: item];
+    [[appDelegate MVC] initPin: item];
     [[appDelegate window] setRootViewController: [appDelegate RVC]];
     [self setText];
 }
@@ -137,6 +170,7 @@
 - (void) cancelAction
 {
     [[appDelegate window] setRootViewController: [appDelegate RVC]];
+    [self setText];
 }
 
 - (void)didReceiveMemoryWarning

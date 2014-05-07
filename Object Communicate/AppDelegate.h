@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "RootViewController.h"
+#import "LoginViewController.h"
 #import "ListViewController.h"
 #import "MapViewController.h"
 #import "ItemViewController.h"
 #import "NewItemViewController.h"
+#import "Item.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 

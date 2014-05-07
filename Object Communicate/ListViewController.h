@@ -11,6 +11,7 @@
 
 @interface ListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
-- (void) initItem: (Item *) item;
+- (void) initCell: (Item *) item;
+- (NSMutableArray *) getItemSource;
 
 @end

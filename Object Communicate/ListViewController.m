@@ -7,7 +7,6 @@
 //
 
 #import "ListViewController.h"
-#import "Item.h"
 #import "AppDelegate.h"
 
 @interface ListViewController ()
@@ -47,31 +46,36 @@
     [self initTable];
     [self initSearch];
     [self initTap];
-
-    Item * item01 = [[Item alloc] initName: @"Clark Kerr Campus" andDescription: @"home of two years" andX:37.8633232 andY: -122.24989010000002];
-    Item * item0 = [[Item alloc] initName: @"Berkeley City" andDescription: @"homeeeee is where the heart is" andX: 37.864470 andY: -122.256706];
-    Item * item1 = [[Item alloc] initName: @"iPhone" andDescription: @"black iPhone with blue and green protective case" andX: 100.0 andY: 100.0];
-    Item * item2 = [[Item alloc] initName: @"MacBook Pro" andDescription: @"13 inch apple computer with serial 123456789" andX: 600.0 andY: 900.0];
-    Item * item3 = [[Item alloc] initName: @"Backpack" andDescription: @"black schoolbag with 4 layers and 1 mesh water bottle holder" andX: 10.0 andY: 20.0];
-    Item * item4 = [[Item alloc] initName: @"Textbook" andDescription: @"linear algebra and differential equations lays/nagles" andX: 1000.0 andY: 1000.0];
-    Item * item5 = [[Item alloc] initName: @"Batteries" andDescription: @"aaa batteries, remember to bring for event" andX: 50.0 andY: 50.0];
-    
-    [self initItem: item01];
-    [self initItem: item0];
-    [self initItem: item1];
-    [self initItem: item2];
-    [self initItem: item3];
-    [self initItem: item4];
-    [self initItem: item5];
-
     [self initOptions];
+    
+    // initialize preexisting cell data, same as in map view controller
+    for (int i = 0; i < [itemSource count]; i++)
+    {
+        [self initCell: (Item *) [itemSource objectAtIndex: i]];
+    }
+    
+    Item * item0 = [[Item alloc] initName: @"Clark Kerr Campus" andDescription: @"berkeley dormitories, home of two years" andX:37.8633232 andY: -122.24989010000002];
+    Item * item1 = [[Item alloc] initName: @"2520 Hillegass Ave" andDescription: @"apartment complex next to people's park" andX: 37.864470 andY: -122.256706];
+    Item * item2 = [[Item alloc] initName: @"iPhone" andDescription: @"black iPhone with blue and green protective case" andX: 100.0 andY: 100.0];
+    Item * item3 = [[Item alloc] initName: @"MacBook Pro" andDescription: @"13 inch apple computer with serial 123456789" andX: 600.0 andY: 900.0];
+    Item * item4 = [[Item alloc] initName: @"Backpack" andDescription: @"black schoolbag with 4 layers and 1 mesh water bottle holder" andX: 10.0 andY: 20.0];
+    Item * item5 = [[Item alloc] initName: @"Textbook" andDescription: @"linear algebra and differential equations lays/nagles" andX: 1000.0 andY: 1000.0];
+    Item * item6 = [[Item alloc] initName: @"Batteries" andDescription: @"aaa batteries, remember to bring for event" andX: 50.0 andY: 50.0];
+    
+    [self initCell: item0];
+    [self initCell: item1];
+    [self initCell: item2];
+    [self initCell: item3];
+    [self initCell: item4];
+    [self initCell: item5];
+    [self initCell: item6];
 }
 
 
 - (void) initSearch
 {
     search = [[UISearchBar alloc] initWithFrame: CGRectMake(0.0, 0.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 12.0)];
-//    [search setSearchBarStyle: UISearchBarStyleMinimal];
+    [search setSearchBarStyle: UISearchBarStyleMinimal];
     [search setDelegate: self];
     [itemTable setTableHeaderView: search];
 }
@@ -131,6 +135,11 @@
     [itemTable setDataSource: self];
     [itemTable setDelegate: self];
     [self.view addSubview: itemTable];
+}
+
+- (NSMutableArray *) getItemSource
+{
+    return itemSource;
 }
 
 
@@ -232,10 +241,10 @@
 /*
  initialize a view that displays an item's information, such as it's name, description, and a link to the location on a map
  */
-- (void) initItem: (Item *) item
+- (void) initCell: (Item *) item
 {
     [itemSource addObject: item];
-    [(MapViewController *) [[[appDelegate RVC] viewControllers] objectAtIndex: 1] initPin: [item getName] withX: [item getX] withY: [item getY]];
+//    [(MapViewController *) [[[appDelegate RVC] viewControllers] objectAtIndex: 1] initPin: [item getName] withX: [item getX] withY: [item getY]];
     [itemTable reloadData];
 }
 
