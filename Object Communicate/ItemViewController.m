@@ -43,11 +43,24 @@
 - (void) initName
 {
     
+    
+    name = [[UILabel alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, [[UIScreen mainScreen] bounds].size.height / 10.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
+    [name setFont: [UIFont fontWithName: @"Verdana" size: 18.0f]];
+    [name setText: @"item"];
+    [name setTextAlignment: NSTextAlignmentLeft];
+    [name setContentMode: UIViewContentModeLeft];
+    [self.view addSubview: name];
+    
 }
 
 - (void) initDescription
 {
-    
+    description= [[UILabel alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0, [[UIScreen mainScreen] bounds].size.height / 10.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 10.0)];
+    [description setFont: [UIFont fontWithName: @"Verdana" size: 18.0f]];
+    [description setText: @"item"];
+    [description setTextAlignment: NSTextAlignmentLeft];
+    [description setContentMode: UIViewContentModeLeft];
+    [self.view addSubview: description];
 }
 
 // previous locations, etc.
