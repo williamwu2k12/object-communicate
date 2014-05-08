@@ -164,7 +164,7 @@
     // check if locationX and locationY are doubles or whether there are letters (no letters allowed)
     
     
-    Item * item = [[Item alloc] initName: [name text] andDescription: [description text] andX: [[locationX text] doubleValue] andY: [[locationY text] doubleValue]];
+    Item * item = [[Item alloc] initName: [name text] andDescription: [description text] andX: [[locationX text] doubleValue] andY: [[locationY text] doubleValue] andActive: YES];
     [[appDelegate LVC] initCell: item];
     [[appDelegate MVC] initPin: item];
     

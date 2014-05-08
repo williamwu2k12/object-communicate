@@ -51,16 +51,16 @@
     // initialize preexisting cell data, same as in map view controller
     for (int i = 0; i < [itemSource count]; i++)
     {
-        [self initCell: (Item *) [itemSource objectAtIndex: i]];
+        [self initItem: (Item *) [itemSource objectAtIndex: i]];
     }
     
-    Item * item0 = [[Item alloc] initName: @"Clark Kerr Campus" andDescription: @"berkeley dormitories, home of two years" andX:37.8633232 andY: -122.24989010000002];
-    Item * item1 = [[Item alloc] initName: @"2520 Hillegass Ave" andDescription: @"apartment complex next to people's park" andX: 37.864470 andY: -122.256706];
-    Item * item2 = [[Item alloc] initName: @"iPhone" andDescription: @"black iPhone with blue and green protective case at Soda" andX: 37.875743 andY: -122.258732];
-    Item * item3 = [[Item alloc] initName: @"MacBook Pro" andDescription: @"13 inch apple computer with serial 123456789" andX: 37.866913 andY: -122.254971];
-    Item * item4 = [[Item alloc] initName: @"Backpack" andDescription: @"black schoolbag with 4 layers and 1 mesh water bottle holder" andX: 37.712569 andY: -122.219743];
-    Item * item5 = [[Item alloc] initName: @"Textbook" andDescription: @"linear algebra and differential equations lays/nagles" andX: 37.872173 andY: -122.267801];
-    Item * item6 = [[Item alloc] initName: @"Batteries" andDescription: @"aaa batteries, remember to bring for event" andX: 37.872062 andY: -122.257812];
+    Item * item0 = [[Item alloc] initName: @"Clark Kerr Campus" andDescription: @"berkeley dormitories, home of two years" andX:37.8633232 andY: -122.24989010000002 andActive: YES];
+    Item * item1 = [[Item alloc] initName: @"2520 Hillegass Ave" andDescription: @"apartment complex next to people's park" andX: 37.864470 andY: -122.256706 andActive: YES];
+    Item * item2 = [[Item alloc] initName: @"iPhone" andDescription: @"black iPhone with blue and green protective case at Soda" andX: 37.875743 andY: -122.258732 andActive: YES];
+    Item * item3 = [[Item alloc] initName: @"MacBook Pro" andDescription: @"13 inch apple computer with serial 123456789" andX: 37.866913 andY: -122.254971 andActive: NO];
+    Item * item4 = [[Item alloc] initName: @"Backpack" andDescription: @"black schoolbag with 4 layers and 1 mesh water bottle holder" andX: 37.712569 andY: -122.219743 andActive: NO];
+    Item * item5 = [[Item alloc] initName: @"Textbook" andDescription: @"linear algebra and differential equations lays/nagles" andX: 37.872173 andY: -122.267801 andActive: NO];
+    Item * item6 = [[Item alloc] initName: @"Batteries" andDescription: @"aaa batteries, remember to bring for event" andX: 37.872062 andY: -122.257812 andActive: NO];
     [self initItem: item0];
     [self initItem: item1];
     [self initItem: item2];
@@ -136,7 +136,7 @@
 - (void) initTable
 {
     itemSource = [[NSMutableArray alloc] init];
-    itemTable = [[UITableView alloc] initWithFrame: CGRectMake(0.0, [[UIScreen mainScreen] bounds].size.height / 10.0, [[UIScreen mainScreen] bounds].size.width, 0.9 * [[UIScreen mainScreen] bounds].size.height) style: UITableViewStyleGrouped];
+    itemTable = [[UITableView alloc] initWithFrame: CGRectMake(0.0, 0.1 * [[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, 0.9 * [[UIScreen mainScreen] bounds].size.height) style: UITableViewStyleGrouped];
     [itemTable setDataSource: self];
     [itemTable setDelegate: self];
     [self.view addSubview: itemTable];
@@ -179,11 +179,20 @@
  */
 - (NSInteger) tableView: (UITableView *) tableView numberOfRowsInSection: (NSInteger) section
 {
+    // active section
+    int count = 0;
+    for (int i = 0; i < [itemSource count]; i++)
+    {
+        if ([(Item *) [itemSource objectAtIndex: i] getActive] == YES)
+        {
+            count++;
+        }
+    }
     if (section == 0)
     {
-        return [itemSource count];
+        return count;
     }
-    return 20;
+    return [itemSource count] - count;
 }
 
 /*
@@ -192,9 +201,27 @@
 - (UITableViewCell *) tableView: (UITableView *) tableView cellForRowAtIndexPath: (NSIndexPath *) indexPath
 {
     UITableViewCell * cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle reuseIdentifier: @"cell"];
-    if ([indexPath row] < [itemSource count] && [indexPath section] == 0)
+    Item * item;
+    BOOL state;
+    if ([indexPath section] == 0)
     {
-        Item * item = [itemSource objectAtIndex: [indexPath row]];
+        state = YES;
+    }
+    else
+    {
+        state = NO;
+    }
+    NSMutableArray * array = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [itemSource count]; i++)
+    {
+        if ([(Item *) [itemSource objectAtIndex: i] getActive] == state)
+        {
+            [array addObject: [itemSource objectAtIndex: i]];
+        }
+    }
+    if ([indexPath row] < [array count])
+    {
+        item = [itemSource objectAtIndex: [indexPath row]];
         [[cell textLabel] setText: [item getName]];
         [[cell textLabel] setFont: [UIFont fontWithName: @"Verdana" size: 12.0]];
         [[cell detailTextLabel] setText: [item getDescription]];
@@ -257,7 +284,7 @@
  */
 - (void) initOptions
 {
-
+    
 }
 
 /*

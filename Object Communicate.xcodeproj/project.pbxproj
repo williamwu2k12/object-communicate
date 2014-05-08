@@ -29,6 +29,7 @@
 		3D887C4D1917A8E600F2A9F1 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D887C4C1917A8E600F2A9F1 /* MapKit.framework */; };
 		3D887C4F19186C5B00F2A9F1 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D887C4E19186C5B00F2A9F1 /* CoreLocation.framework */; };
 		3D887C5119186C8B00F2A9F1 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D887C5019186C8B00F2A9F1 /* MediaPlayer.framework */; };
+		3D887C54191B4BC900F2A9F1 /* Marker.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D887C53191B4BC900F2A9F1 /* Marker.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		3D887C4C1917A8E600F2A9F1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3D887C4E19186C5B00F2A9F1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3D887C5019186C8B00F2A9F1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		3D887C52191B4BC900F2A9F1 /* Marker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Marker.h; sourceTree = "<group>"; };
+		3D887C53191B4BC900F2A9F1 /* Marker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Marker.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +161,8 @@
 				3D887C3518FF800900F2A9F1 /* MapViewController.m */,
 				3D887C371903444200F2A9F1 /* Item.h */,
 				3D887C381903444200F2A9F1 /* Item.m */,
+				3D887C52191B4BC900F2A9F1 /* Marker.h */,
+				3D887C53191B4BC900F2A9F1 /* Marker.m */,
 			);
 			path = "Object Communicate";
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 				3D887C4B19174C7F00F2A9F1 /* NewItemViewController.m in Sources */,
 				3D887C3318FF6EDD00F2A9F1 /* ListViewController.m in Sources */,
 				3D887C3618FF800900F2A9F1 /* MapViewController.m in Sources */,
+				3D887C54191B4BC900F2A9F1 /* Marker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "MapKit/MapKit.h"
 #import "Item.h"
+#import "Marker.h"
 
 @interface MapViewController : UIViewController <CLLocationManagerDelegate>
 

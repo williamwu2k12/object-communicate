@@ -15,20 +15,34 @@
     double x;
     double y;
     UIImage * image;
+    BOOL active;
+    double battery;
+    NSMutableArray * accesses;
 }
 
-- (id) initName: (NSString *) itemName andDescription: (NSString *) itemDescription andX: (double) itemX andY: (double) itemY
+- (id) initName: (NSString *) itemName andDescription: (NSString *) itemDescription andX: (double) itemX andY: (double) itemY andActive: (BOOL) state
 {
     name = itemName;
     description = itemDescription;
     x = itemX;
     y = itemY;
+    active = state;
     return self;
 }
+
+
+
+
+// setters
 
 - (void) setName: (NSString *) itemName
 {
     name = itemName;
+}
+
+- (void) setActive: (BOOL) state
+{
+    active = state;
 }
 
 - (void) setDescription: (NSString *) itemDescription
@@ -41,6 +55,12 @@
     x = xPos;
     y = yPos;
 }
+
+
+
+
+
+// getters
 
 - (NSString *) getName
 {
@@ -60,6 +80,11 @@
 - (double) getY
 {
     return y;
+}
+
+- (BOOL) getActive
+{
+    return active;
 }
 
 @end

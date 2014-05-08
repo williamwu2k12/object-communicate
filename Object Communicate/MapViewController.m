@@ -39,7 +39,7 @@
     [self initMap];
     [self initMaptype];
     [self initManager];
-    [self goToPlace]; // replace this with location of item in future
+    [self goToX: 37.866913 andY: -122.254971 andZoom: 0.05];
 
     // load all the previously existing items
     NSMutableArray * itemSource = [[appDelegate LVC] getItemSource];
@@ -111,15 +111,34 @@
     }
 }
 
+- (MKAnnotationView *) mapView: (MKMapView *) mapView viewForAnnotation: (id<MKAnnotation>) annotation
+{
+    MKPinAnnotationView * pin = [[MKPinAnnotationView alloc] initWithAnnotation: annotation reuseIdentifier: @"pinview"];
+    [pin setEnabled: YES];
+    [pin setCanShowCallout: YES];
+    if ([[(Marker *) annotation getItem] getActive])
+    {
+        [pin setPinColor: MKPinAnnotationColorRed];
+    }
+    else
+    {
+        [pin setPinColor: MKPinAnnotationColorGreen];
+    }
+    return pin;
+}
+
 - (void) initPin: (Item *) item
 {
     CLLocationCoordinate2D coordinate;
     coordinate.latitude = [item getX];
     coordinate.longitude = [item getY];
-    MKPointAnnotation * point = [[MKPointAnnotation alloc] init];
-    [point setCoordinate: coordinate];
-    [point setTitle: [item getName]];
-    [map addAnnotation: point];
+
+    Marker * marker = [[Marker alloc] init];
+    [marker setCoordinate: coordinate];
+    [marker setTitle: [item getName]];
+    [marker setSubtitle: [item getDescription]];
+    [marker setItem: item];
+    [map addAnnotation: marker];
 }
 
 - (void) initManager
@@ -136,26 +155,25 @@
 
 
 
-- (void) goToPlace
+- (void) goToX: (double) x andY: (double) y andZoom: (double) zoom
 {
     CLLocationCoordinate2D coordinate;
-    coordinate.latitude = 37.866913;
-    coordinate.longitude = -122.254971;
+    coordinate.latitude = x;
+    coordinate.longitude = y;
     MKCoordinateSpan span;
-    span.latitudeDelta = 0.05;
-    span.longitudeDelta = 0.05;
+    span.latitudeDelta = zoom;
+    span.longitudeDelta = zoom;
     MKCoordinateRegion region;
     region.center = coordinate;
     region.span = span;
-
     [map setRegion: region animated: YES];
 }
 
 - (void) currentLocation
 {
     CLLocationCoordinate2D coordinate;
-    coordinate.latitude = manager.location.coordinate.latitude;
-    coordinate.longitude = manager.location.coordinate.longitude;
+    coordinate.latitude = [[[map userLocation] location] coordinate].latitude;
+    coordinate.longitude = [[[map userLocation] location] coordinate].longitude;
     MKCoordinateSpan span;
     span.latitudeDelta = 0.2;
     span.longitudeDelta = 0.2;
@@ -163,7 +181,8 @@
     region.center = coordinate;
     region.span = span;
     
-    MKPointAnnotation * pin = [[MKPointAnnotation alloc] init];
+    Marker * pin = [[Marker alloc] init];
+    [pin setItem: [[Item alloc] initName: @"You are here" andDescription: @"your current location, will change" andX: [[[map userLocation] location] coordinate].latitude andY: [[[map userLocation] location] coordinate].longitude andActive: YES]];
     [pin setCoordinate: coordinate];
     [map addAnnotation: pin];
     [map setRegion: region animated: YES];
