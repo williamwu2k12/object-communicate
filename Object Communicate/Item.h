@@ -7,15 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Marker.h"
 
 @interface Item : NSObject
 
+// initializers
 - (id) initName: (NSString *) itemName andDescription: (NSString *) itemDescription andX: (double) itemX andY: (double) itemY andActive: (BOOL) state;
 
 // setters
 - (void) setName: (NSString *) itemName;
 - (void) setDescription: (NSString *) itemDescription;
 - (void) setLocationWithX: (double) xPos andY: (double) yPos;
+- (void) setActive: (BOOL) state;
+- (void) setMarker: (Marker *) pin;
 
 // getters
 - (NSString *) getName;
@@ -23,5 +27,6 @@
 - (double) getX;
 - (double) getY;
 - (BOOL) getActive;
+- (Marker *) getMarker;
 
 @end

@@ -16,5 +16,6 @@
 
 - (void) initPin: (Item *) item;
 - (void) reloadPins;
+- (void) goToX: (double) x andY: (double) y andZoom: (double) zoom withItem: (Item *) item andHighlight: (BOOL) highlight;
 
 @end

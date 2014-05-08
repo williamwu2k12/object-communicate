@@ -26,6 +26,14 @@
     [self.RVC setViewControllers: [NSArray arrayWithObjects: self.LVC, self.MVC, self.IVC, nil]];
     [self.RVC setDelegate: (id) self];
     
+    // loading all views since by default, they are lazily loaded
+    [self.LVC view];
+    [self.MVC view];
+    [self.IVC view];
+    [self.LIVC view];
+    [self.NIVC view];
+    [self.RVC view];
+    
     [self initViewController: self.LVC withName: @"List"];
     [self initViewController: self.MVC withName: @"Map"];
     [self initViewController: self.IVC withName: @"Item"];

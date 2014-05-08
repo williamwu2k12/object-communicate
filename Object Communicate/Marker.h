@@ -7,7 +7,7 @@
 //
 
 #import <MapKit/MapKit.h>
-#import "Item.h"
+@class Item;
 
 @interface Marker : MKPointAnnotation
 

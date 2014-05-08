@@ -211,17 +211,10 @@
     {
         state = NO;
     }
-    NSMutableArray * array = [[NSMutableArray alloc] init];
-    for (int i = 0; i < [itemSource count]; i++)
-    {
-        if ([(Item *) [itemSource objectAtIndex: i] getActive] == state)
-        {
-            [array addObject: [itemSource objectAtIndex: i]];
-        }
-    }
+    NSMutableArray * array = [self getItems: state];
     if ([indexPath row] < [array count])
     {
-        item = [itemSource objectAtIndex: [indexPath row]];
+        item = [array objectAtIndex: [indexPath row]];
         [[cell textLabel] setText: [item getName]];
         [[cell textLabel] setFont: [UIFont fontWithName: @"Verdana" size: 12.0]];
         [[cell detailTextLabel] setText: [item getDescription]];
@@ -243,9 +236,34 @@
 //        self.tabBarController.selectedIndex = 1;
 //    }
     [tableView deselectRowAtIndexPath: indexPath animated: YES];
+    Item * item;
+    BOOL state;
+    if ([indexPath section] == 0)
+    {
+        state = YES;
+    }
+    else
+    {
+        state = NO;
+    }
+    NSMutableArray * array = [self getItems: state];
+    item = (Item *) [array objectAtIndex: [indexPath row]];
+    [[appDelegate MVC] goToX: [item getX] andY: [item getY] andZoom: 0.05 withItem: item andHighlight: YES];
+    self.tabBarController.selectedIndex = 1;
 }
 
-
+- (NSMutableArray *) getItems: (BOOL) state
+{
+    NSMutableArray * array = [[NSMutableArray alloc] init];
+    for (int i = 0; i < [itemSource count]; i++)
+    {
+        if ([(Item *) [itemSource objectAtIndex: i] getActive] == state)
+        {
+            [array addObject: [itemSource objectAtIndex: i]];
+        }
+    }
+    return array;
+}
 
 
 - (void) addItem: (Item *) item

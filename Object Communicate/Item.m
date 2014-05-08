@@ -18,19 +18,22 @@
     BOOL active;
     double battery;
     NSMutableArray * accesses;
+    Marker * marker;
 }
 
 - (id) initName: (NSString *) itemName andDescription: (NSString *) itemDescription andX: (double) itemX andY: (double) itemY andActive: (BOOL) state
 {
-    name = itemName;
-    description = itemDescription;
-    x = itemX;
-    y = itemY;
-    active = state;
+    self = [super init];
+    if (self != nil)
+    {
+        name = itemName;
+        description = itemDescription;
+        x = itemX;
+        y = itemY;
+        active = state;
+    }
     return self;
 }
-
-
 
 
 // setters
@@ -54,6 +57,11 @@
 {
     x = xPos;
     y = yPos;
+}
+
+- (void) setMarker: (Marker *) pin
+{
+    marker = pin;
 }
 
 
@@ -85,6 +93,11 @@
 - (BOOL) getActive
 {
     return active;
+}
+
+- (Marker *) getMarker
+{
+    return marker;
 }
 
 @end

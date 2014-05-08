@@ -39,7 +39,7 @@
     [self initMap];
     [self initMaptype];
     [self initManager];
-    [self goToX: 37.866913 andY: -122.254971 andZoom: 0.05];
+    [self goToX: 37.866913 andY: -122.254971 andZoom: 0.05 withItem: nil andHighlight: NO];
 
     // load all the previously existing items
     NSMutableArray * itemSource = [[appDelegate LVC] getItemSource];
@@ -138,6 +138,7 @@
     [marker setTitle: [item getName]];
     [marker setSubtitle: [item getDescription]];
     [marker setItem: item];
+    [item setMarker: marker];
     [map addAnnotation: marker];
 }
 
@@ -155,7 +156,7 @@
 
 
 
-- (void) goToX: (double) x andY: (double) y andZoom: (double) zoom
+- (void) goToX: (double) x andY: (double) y andZoom: (double) zoom withItem: (Item *) item andHighlight: (BOOL) highlight
 {
     CLLocationCoordinate2D coordinate;
     coordinate.latitude = x;
@@ -166,7 +167,14 @@
     MKCoordinateRegion region;
     region.center = coordinate;
     region.span = span;
+    
+    if (highlight)
+    {
+        [map selectAnnotation: [item getMarker] animated: YES];
+    }
+    
     [map setRegion: region animated: YES];
+    
 }
 
 - (void) currentLocation
