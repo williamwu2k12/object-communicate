@@ -20,6 +20,7 @@
 - (void) setLocationWithX: (double) xPos andY: (double) yPos;
 - (void) setActive: (BOOL) state;
 - (void) setMarker: (Marker *) pin;
+- (void) setImage: (UIImage *) picture;
 
 // getters
 - (NSString *) getName;
@@ -28,5 +29,6 @@
 - (double) getY;
 - (BOOL) getActive;
 - (Marker *) getMarker;
+- (UIImage *) getImage;
 
 @end

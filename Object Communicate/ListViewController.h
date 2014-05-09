@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Item.h"
 
-@interface ListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
+@interface ListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate, UISearchDisplayDelegate>
 
 - (void) initCell: (Item *) item;
 - (NSMutableArray *) getItemSource;

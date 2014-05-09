@@ -64,6 +64,11 @@
     marker = pin;
 }
 
+- (void) setImage: (UIImage *) picture
+{
+    image = picture;
+}
+
 
 
 
@@ -98,6 +103,11 @@
 - (Marker *) getMarker
 {
     return marker;
+}
+
+- (UIImage *) getImage
+{
+    return image;
 }
 
 @end

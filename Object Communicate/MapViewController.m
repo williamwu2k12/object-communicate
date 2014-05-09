@@ -49,11 +49,11 @@
     }
     
     // testing
-    UIButton * button = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    [button setFrame: CGRectMake(0.0, 20.0, 80.0, 60.0)];
-    [button setTitle: @"TESTING" forState: UIControlStateNormal];
-    [button addTarget: self action: @selector(currentLocation) forControlEvents: UIControlEventTouchUpInside];
-    [self.view addSubview: button];
+//    UIButton * button = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+//    [button setFrame: CGRectMake(0.0, 20.0, 80.0, 60.0)];
+//    [button setTitle: @"TESTING" forState: UIControlStateNormal];
+//    [button addTarget: self action: @selector(currentLocation) forControlEvents: UIControlEventTouchUpInside];
+//    [self.view addSubview: button];
 }
 
 - (void) reloadPins

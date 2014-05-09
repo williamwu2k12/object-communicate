@@ -21,6 +21,7 @@
     UILabel * title;
     UIButton * addButton;
     UISearchBar * search;
+    UISearchDisplayController * controller;
     
     AppDelegate * appDelegate;
 }
@@ -82,6 +83,10 @@
     search = [[UISearchBar alloc] initWithFrame: CGRectMake(0.0, 0.0, [[UIScreen mainScreen] bounds].size.width, [[UIScreen mainScreen] bounds].size.height / 12.0)];
     [search setSearchBarStyle: UISearchBarStyleMinimal];
     [search setDelegate: self];
+    controller = [[UISearchDisplayController alloc] initWithSearchBar: search contentsController: self];
+    [controller setSearchResultsDataSource: self];
+    [controller setSearchResultsDelegate: self];
+    
     [itemTable setTableHeaderView: search];
 }
 
@@ -223,10 +228,9 @@
         
         UIButton * button = [UIButton buttonWithType: UIButtonTypeRoundedRect];
         [button setFrame: CGRectMake(0.85 * [[UIScreen mainScreen] bounds].size.width, 0.015 * [[UIScreen mainScreen] bounds].size.height, 0.15 * [[UIScreen mainScreen] bounds].size.width, 0.05 * [[UIScreen mainScreen] bounds].size.height)];
-//        [button setBackgroundColor: [UIColor greenColor]];
         
         [button addTarget: self action: @selector(goToItem:) forControlEvents: UIControlEventTouchUpInside];
-        [button setTitle: @"Map" forState: UIControlStateNormal];
+        [button setTitle: @">>>" forState: UIControlStateNormal];
         [[cell contentView] addSubview: button];
     }
     return cell;
@@ -234,14 +238,19 @@
 
 - (void) goToItem: (id) sender
 {
-    Item * item;
-    BOOL state;
     UIView * cell = sender;
     while (cell != nil && ![cell isKindOfClass: [UITableViewCell class]])
     {
         cell = [cell superview];
     }
     NSIndexPath * indexPath = [itemTable indexPathForCell: (UITableViewCell *) cell];
+    [self goToVC: 1 withIndexPath: indexPath];
+}
+
+- (void) goToVC: (int) index withIndexPath: (NSIndexPath *) indexPath
+{
+    Item * item;
+    BOOL state;
     if ([indexPath section] == 0)
     {
         state = YES;
@@ -252,8 +261,15 @@
     }
     NSMutableArray * array = [self getItems: state];
     item = (Item *) [array objectAtIndex: [indexPath row]];
-    [[appDelegate MVC] goToX: [item getX] andY: [item getY] andZoom: 0.05 withItem: item andHighlight: YES];
-    self.tabBarController.selectedIndex = 1;
+    if (index == 1)
+    {
+        [[appDelegate MVC] goToX: [item getX] andY: [item getY] andZoom: 0.05 withItem: item andHighlight:YES];
+    }
+    if (index == 2)
+    {
+        [[appDelegate IVC] initItemNode: item];
+    }
+    [self.tabBarController setSelectedIndex: index];
 }
 
 /*
@@ -262,38 +278,7 @@
 - (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath
 {
     [tableView deselectRowAtIndexPath: indexPath animated: YES];
-    
-    
-    Item * item;
-    BOOL state;
-    if ([indexPath section] == 0)
-    {
-        state = YES;
-    }
-    else
-    {
-        state = NO;
-    }
-    NSMutableArray * array = [self getItems: state];
-    item = (Item *) [array objectAtIndex: [indexPath row]];
-    [[appDelegate IVC] initItemNode: item];
-    [self.tabBarController setSelectedIndex: 2];
-    
-    
-//    Item * item;
-//    BOOL state;
-//    if ([indexPath section] == 0)
-//    {
-//        state = YES;
-//    }
-//    else
-//    {
-//        state = NO;
-//    }
-//    NSMutableArray * array = [self getItems: state];
-//    item = (Item *) [array objectAtIndex: [indexPath row]];
-//    [[appDelegate MVC] goToX: [item getX] andY: [item getY] andZoom: 0.05 withItem: item andHighlight: YES];
-//    self.tabBarController.selectedIndex = 1;
+    [self goToVC: 2 withIndexPath: indexPath];
 }
 
 - (NSMutableArray *) getItems: (BOOL) state

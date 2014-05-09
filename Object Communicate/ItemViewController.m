@@ -47,8 +47,31 @@
     [self cakemaker];
     [self startup];
     
-    
+    [self initImageView];
 }
+
+
+- (void) initImageView
+{
+    location = [[UIImageView alloc] initWithFrame: CGRectMake(0.1 * [[UIScreen mainScreen] bounds].size.width, 0.5 * [[UIScreen mainScreen] bounds].size.height, 0.8 * [[UIScreen mainScreen] bounds].size.width, 0.4 * [[UIScreen mainScreen] bounds].size.height)];
+    [[location layer] setBorderWidth: 1.0];
+//    [location setImage: [UIImage imageNamed: @"cake.jpg"]];
+    [self.view addSubview: location];
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 -(void)startup{
     name = [[UILabel alloc] initWithFrame: CGRectMake([[UIScreen mainScreen] bounds].size.width / 20.0,
@@ -72,7 +95,8 @@
     CGFloat width = [[UIScreen mainScreen] bounds].size.width;
     CGFloat height = [[UIScreen mainScreen] bounds].size.height;
     trollbutton = [UIButton buttonWithType: UIButtonTypeRoundedRect];
-    [trollbutton setFrame: CGRectMake(0.1 * width, 0.5 * height, 0.85 * width, 0.1 * height)];
+    [[trollbutton titleLabel] setFont: [UIFont fontWithName: @"Verdana" size: 12.0]];
+    [trollbutton setFrame: CGRectMake(0.1 * width, 0.4 * height, 0.8 * width, 0.1 * height)];
     [trollbutton setBackgroundColor:[UIColor greenColor]];
     [trollbutton setTitle: @"Push Button for Cake" forState: UIControlStateNormal];
     [trollbutton addTarget: self action: @selector(theCakeisALie) forControlEvents: UIControlEventTouchUpInside];
@@ -120,11 +144,16 @@
 {
     [trollbutton setTitle: @"Push Button for Cake" forState: UIControlStateNormal];
     [trollbutton addTarget: self action: @selector(theCakeisALie) forControlEvents: UIControlEventTouchUpInside];
+//        [location setImage: [UIImage imageNamed: @"cake.jpg"]];
 }
 
 - (void) theCakeisALie
 {
     [trollbutton setTitle: @"The cake is a lie. Ain't no Free Lunch." forState: UIControlStateNormal];
+    if ([location image] != nil)
+    {
+//        [location setImage: [UIImage imageNamed: @"miltonfriedman.jpg"]];
+    }
     [trollbutton addTarget: self action: @selector(gotTheCake) forControlEvents: UIControlEventTouchUpInside];
 }
 
