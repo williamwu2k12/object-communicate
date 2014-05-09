@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Item.h"
+
 
 @interface ItemViewController : UIViewController
+
+- (void) initItemNode: (Item *) item;
 
 @end

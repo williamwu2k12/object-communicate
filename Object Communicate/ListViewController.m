@@ -56,9 +56,9 @@
     
     Item * item0 = [[Item alloc] initName: @"Clark Kerr Campus" andDescription: @"berkeley dormitories, home of two years" andX:37.8633232 andY: -122.24989010000002 andActive: YES];
     Item * item1 = [[Item alloc] initName: @"2520 Hillegass Ave" andDescription: @"apartment complex next to people's park" andX: 37.864470 andY: -122.256706 andActive: YES];
-    Item * item2 = [[Item alloc] initName: @"iPhone" andDescription: @"black iPhone with blue and green protective case at Soda" andX: 37.875743 andY: -122.258732 andActive: YES];
+    Item * item2 = [[Item alloc] initName: @"iPhone" andDescription: @"black iPhone with blue and green protective case" andX: 37.875743 andY: -122.258732 andActive: YES];
     Item * item3 = [[Item alloc] initName: @"MacBook Pro" andDescription: @"13 inch apple computer with serial 123456789" andX: 37.866913 andY: -122.254971 andActive: NO];
-    Item * item4 = [[Item alloc] initName: @"Backpack" andDescription: @"black schoolbag with 4 layers and 1 mesh water bottle holder" andX: 37.712569 andY: -122.219743 andActive: NO];
+    Item * item4 = [[Item alloc] initName: @"Backpack" andDescription: @"black schoolbag with 4 layers" andX: 37.712569 andY: -122.219743 andActive: NO];
     Item * item5 = [[Item alloc] initName: @"Textbook" andDescription: @"linear algebra and differential equations lays/nagles" andX: 37.872173 andY: -122.267801 andActive: NO];
     Item * item6 = [[Item alloc] initName: @"Batteries" andDescription: @"aaa batteries, remember to bring for event" andX: 37.872062 andY: -122.257812 andActive: NO];
     [self initItem: item0];
@@ -219,25 +219,29 @@
         [[cell textLabel] setFont: [UIFont fontWithName: @"Verdana" size: 12.0]];
         [[cell detailTextLabel] setText: [item getDescription]];
         [[cell detailTextLabel] setFont: [UIFont fontWithName: @"Verdana-Italic" size: 9.0]];
+
+        
+        UIButton * button = [UIButton buttonWithType: UIButtonTypeRoundedRect];
+        [button setFrame: CGRectMake(0.85 * [[UIScreen mainScreen] bounds].size.width, 0.015 * [[UIScreen mainScreen] bounds].size.height, 0.15 * [[UIScreen mainScreen] bounds].size.width, 0.05 * [[UIScreen mainScreen] bounds].size.height)];
+//        [button setBackgroundColor: [UIColor greenColor]];
+        
+        [button addTarget: self action: @selector(goToItem:) forControlEvents: UIControlEventTouchUpInside];
+        [button setTitle: @"Map" forState: UIControlStateNormal];
+        [[cell contentView] addSubview: button];
     }
     return cell;
 }
 
-/*
- override what happens when a row is selected
- */
-- (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath
+- (void) goToItem: (id) sender
 {
-//    if ([indexPath row] < [itemSource count])
-//    {
-//        Item * item = [itemSource objectAtIndex: [indexPath row]];
-//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle: @"Item Clicked" message: [@"Go to MapViewController with coordinates: " stringByAppendingString: [NSString stringWithFormat: @"%f",[item getX]]] delegate: self cancelButtonTitle: @"Cancel" otherButtonTitles: nil];
-//        [alert show];
-//        self.tabBarController.selectedIndex = 1;
-//    }
-    [tableView deselectRowAtIndexPath: indexPath animated: YES];
     Item * item;
     BOOL state;
+    UIView * cell = sender;
+    while (cell != nil && ![cell isKindOfClass: [UITableViewCell class]])
+    {
+        cell = [cell superview];
+    }
+    NSIndexPath * indexPath = [itemTable indexPathForCell: (UITableViewCell *) cell];
     if ([indexPath section] == 0)
     {
         state = YES;
@@ -250,6 +254,46 @@
     item = (Item *) [array objectAtIndex: [indexPath row]];
     [[appDelegate MVC] goToX: [item getX] andY: [item getY] andZoom: 0.05 withItem: item andHighlight: YES];
     self.tabBarController.selectedIndex = 1;
+}
+
+/*
+ override what happens when a row is selected
+ */
+- (void) tableView: (UITableView *) tableView didSelectRowAtIndexPath: (NSIndexPath *) indexPath
+{
+    [tableView deselectRowAtIndexPath: indexPath animated: YES];
+    
+    
+    Item * item;
+    BOOL state;
+    if ([indexPath section] == 0)
+    {
+        state = YES;
+    }
+    else
+    {
+        state = NO;
+    }
+    NSMutableArray * array = [self getItems: state];
+    item = (Item *) [array objectAtIndex: [indexPath row]];
+    [[appDelegate IVC] initItemNode: item];
+    [self.tabBarController setSelectedIndex: 2];
+    
+    
+//    Item * item;
+//    BOOL state;
+//    if ([indexPath section] == 0)
+//    {
+//        state = YES;
+//    }
+//    else
+//    {
+//        state = NO;
+//    }
+//    NSMutableArray * array = [self getItems: state];
+//    item = (Item *) [array objectAtIndex: [indexPath row]];
+//    [[appDelegate MVC] goToX: [item getX] andY: [item getY] andZoom: 0.05 withItem: item andHighlight: YES];
+//    self.tabBarController.selectedIndex = 1;
 }
 
 - (NSMutableArray *) getItems: (BOOL) state

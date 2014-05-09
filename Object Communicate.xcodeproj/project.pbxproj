@@ -499,6 +499,7 @@
 				3D887C2D18FF6D5400F2A9F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3D887C2E18FF6D5400F2A9F1 /* Build configuration list for PBXNativeTarget "Object CommunicateTests" */ = {
 			isa = XCConfigurationList;
@@ -507,6 +508,7 @@
 				3D887C3018FF6D5400F2A9F1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
