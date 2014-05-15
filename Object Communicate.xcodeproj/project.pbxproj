@@ -70,8 +70,8 @@
 		3D887C44190A7CF100F2A9F1 /* ItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemViewController.m; path = ViewControllers/Item/ItemViewController.m; sourceTree = "<group>"; };
 		3D887C461917329000F2A9F1 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ViewControllers/Login/LoginViewController.h; sourceTree = "<group>"; };
 		3D887C471917329000F2A9F1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ViewControllers/Login/LoginViewController.m; sourceTree = "<group>"; };
-		3D887C4919174C7F00F2A9F1 /* NewItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewItemViewController.h; path = ViewControllers/NewItem/NewItemViewController.h; sourceTree = "<group>"; };
-		3D887C4A19174C7F00F2A9F1 /* NewItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewItemViewController.m; path = ViewControllers/NewItem/NewItemViewController.m; sourceTree = "<group>"; };
+		3D887C4919174C7F00F2A9F1 /* NewItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewItemViewController.h; path = ViewControllers/List/NewItemViewController.h; sourceTree = "<group>"; };
+		3D887C4A19174C7F00F2A9F1 /* NewItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewItemViewController.m; path = ViewControllers/List/NewItemViewController.m; sourceTree = "<group>"; };
 		3D887C4C1917A8E600F2A9F1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3D887C4E19186C5B00F2A9F1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3D887C5019186C8B00F2A9F1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -147,22 +147,8 @@
 				3D887C1218FF6D5400F2A9F1 /* AppDelegate.m */,
 				3D887C1418FF6D5400F2A9F1 /* Images.xcassets */,
 				3D887C0918FF6D5400F2A9F1 /* Supporting Files */,
-				3D887C401909205400F2A9F1 /* RootViewController.h */,
-				3D887C411909205400F2A9F1 /* RootViewController.m */,
-				3D887C461917329000F2A9F1 /* LoginViewController.h */,
-				3D887C471917329000F2A9F1 /* LoginViewController.m */,
-				3D887C3118FF6EDD00F2A9F1 /* ListViewController.h */,
-				3D887C3218FF6EDD00F2A9F1 /* ListViewController.m */,
-				3DDBD90F1924A6B80066C103 /* ItemViewController.h */,
-				3D887C44190A7CF100F2A9F1 /* ItemViewController.m */,
-				3D887C4919174C7F00F2A9F1 /* NewItemViewController.h */,
-				3D887C4A19174C7F00F2A9F1 /* NewItemViewController.m */,
-				3D887C3418FF800900F2A9F1 /* MapViewController.h */,
-				3D887C3518FF800900F2A9F1 /* MapViewController.m */,
-				3D887C371903444200F2A9F1 /* Item.h */,
-				3D887C381903444200F2A9F1 /* Item.m */,
-				3D887C52191B4BC900F2A9F1 /* Marker.h */,
-				3D887C53191B4BC900F2A9F1 /* Marker.m */,
+				3DDBD9171924AA480066C103 /* ViewControllers */,
+				3DDBD9181924AA4F0066C103 /* Objects */,
 			);
 			path = "Object Communicate";
 			sourceTree = "<group>";
@@ -194,6 +180,92 @@
 				3D887C2418FF6D5400F2A9F1 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3DDBD9101924AA000066C103 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				3D887C401909205400F2A9F1 /* RootViewController.h */,
+				3D887C411909205400F2A9F1 /* RootViewController.m */,
+			);
+			name = Root;
+			sourceTree = "<group>";
+		};
+		3DDBD9111924AA060066C103 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				3D887C461917329000F2A9F1 /* LoginViewController.h */,
+				3D887C471917329000F2A9F1 /* LoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		3DDBD9121924AA0F0066C103 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				3D887C3118FF6EDD00F2A9F1 /* ListViewController.h */,
+				3D887C3218FF6EDD00F2A9F1 /* ListViewController.m */,
+				3D887C4919174C7F00F2A9F1 /* NewItemViewController.h */,
+				3D887C4A19174C7F00F2A9F1 /* NewItemViewController.m */,
+			);
+			name = List;
+			sourceTree = "<group>";
+		};
+		3DDBD9131924AA1B0066C103 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				3DDBD90F1924A6B80066C103 /* ItemViewController.h */,
+				3D887C44190A7CF100F2A9F1 /* ItemViewController.m */,
+			);
+			name = Item;
+			sourceTree = "<group>";
+		};
+		3DDBD9141924AA340066C103 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				3D887C3418FF800900F2A9F1 /* MapViewController.h */,
+				3D887C3518FF800900F2A9F1 /* MapViewController.m */,
+			);
+			name = Map;
+			sourceTree = "<group>";
+		};
+		3DDBD9151924AA380066C103 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				3D887C371903444200F2A9F1 /* Item.h */,
+				3D887C381903444200F2A9F1 /* Item.m */,
+			);
+			name = Item;
+			sourceTree = "<group>";
+		};
+		3DDBD9161924AA3E0066C103 /* Marker */ = {
+			isa = PBXGroup;
+			children = (
+				3D887C52191B4BC900F2A9F1 /* Marker.h */,
+				3D887C53191B4BC900F2A9F1 /* Marker.m */,
+			);
+			name = Marker;
+			sourceTree = "<group>";
+		};
+		3DDBD9171924AA480066C103 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3DDBD9101924AA000066C103 /* Root */,
+				3DDBD9111924AA060066C103 /* Login */,
+				3DDBD9121924AA0F0066C103 /* List */,
+				3DDBD9131924AA1B0066C103 /* Item */,
+				3DDBD9141924AA340066C103 /* Map */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3DDBD9181924AA4F0066C103 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				3DDBD9151924AA380066C103 /* Item */,
+				3DDBD9161924AA3E0066C103 /* Marker */,
+			);
+			name = Objects;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
