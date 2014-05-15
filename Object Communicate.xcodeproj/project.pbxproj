@@ -59,25 +59,25 @@
 		3D887C2318FF6D5400F2A9F1 /* Object CommunicateTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Object CommunicateTests-Info.plist"; sourceTree = "<group>"; };
 		3D887C2518FF6D5400F2A9F1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3D887C2718FF6D5400F2A9F1 /* Object_CommunicateTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Object_CommunicateTests.m; sourceTree = "<group>"; };
-		3D887C3118FF6EDD00F2A9F1 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
-		3D887C3218FF6EDD00F2A9F1 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
-		3D887C3418FF800900F2A9F1 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		3D887C3518FF800900F2A9F1 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
-		3D887C371903444200F2A9F1 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
-		3D887C381903444200F2A9F1 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
-		3D887C401909205400F2A9F1 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		3D887C411909205400F2A9F1 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		3D887C43190A7CF100F2A9F1 /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemViewController.h; sourceTree = "<group>"; };
-		3D887C44190A7CF100F2A9F1 /* ItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemViewController.m; sourceTree = "<group>"; };
-		3D887C461917329000F2A9F1 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		3D887C471917329000F2A9F1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		3D887C4919174C7F00F2A9F1 /* NewItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewItemViewController.h; sourceTree = "<group>"; };
-		3D887C4A19174C7F00F2A9F1 /* NewItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewItemViewController.m; sourceTree = "<group>"; };
+		3D887C3118FF6EDD00F2A9F1 /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ListViewController.h; path = ViewControllers/List/ListViewController.h; sourceTree = "<group>"; };
+		3D887C3218FF6EDD00F2A9F1 /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ListViewController.m; path = ViewControllers/List/ListViewController.m; sourceTree = "<group>"; };
+		3D887C3418FF800900F2A9F1 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MapViewController.h; path = ViewControllers/Map/MapViewController.h; sourceTree = "<group>"; };
+		3D887C3518FF800900F2A9F1 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MapViewController.m; path = ViewControllers/Map/MapViewController.m; sourceTree = "<group>"; };
+		3D887C371903444200F2A9F1 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = Objects/Item/Item.h; sourceTree = "<group>"; };
+		3D887C381903444200F2A9F1 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = Objects/Item/Item.m; sourceTree = "<group>"; };
+		3D887C401909205400F2A9F1 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = ViewControllers/Root/RootViewController.h; sourceTree = "<group>"; };
+		3D887C411909205400F2A9F1 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = ViewControllers/Root/RootViewController.m; sourceTree = "<group>"; };
+		3D887C44190A7CF100F2A9F1 /* ItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ItemViewController.m; path = ViewControllers/Item/ItemViewController.m; sourceTree = "<group>"; };
+		3D887C461917329000F2A9F1 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = ViewControllers/Login/LoginViewController.h; sourceTree = "<group>"; };
+		3D887C471917329000F2A9F1 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = ViewControllers/Login/LoginViewController.m; sourceTree = "<group>"; };
+		3D887C4919174C7F00F2A9F1 /* NewItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewItemViewController.h; path = ViewControllers/NewItem/NewItemViewController.h; sourceTree = "<group>"; };
+		3D887C4A19174C7F00F2A9F1 /* NewItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewItemViewController.m; path = ViewControllers/NewItem/NewItemViewController.m; sourceTree = "<group>"; };
 		3D887C4C1917A8E600F2A9F1 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		3D887C4E19186C5B00F2A9F1 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		3D887C5019186C8B00F2A9F1 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		3D887C52191B4BC900F2A9F1 /* Marker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Marker.h; sourceTree = "<group>"; };
-		3D887C53191B4BC900F2A9F1 /* Marker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Marker.m; sourceTree = "<group>"; };
+		3D887C52191B4BC900F2A9F1 /* Marker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Marker.h; path = Objects/Marker/Marker.h; sourceTree = "<group>"; };
+		3D887C53191B4BC900F2A9F1 /* Marker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Marker.m; path = Objects/Marker/Marker.m; sourceTree = "<group>"; };
+		3DDBD90F1924A6B80066C103 /* ItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ItemViewController.h; path = ViewControllers/Item/ItemViewController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +153,7 @@
 				3D887C471917329000F2A9F1 /* LoginViewController.m */,
 				3D887C3118FF6EDD00F2A9F1 /* ListViewController.h */,
 				3D887C3218FF6EDD00F2A9F1 /* ListViewController.m */,
-				3D887C43190A7CF100F2A9F1 /* ItemViewController.h */,
+				3DDBD90F1924A6B80066C103 /* ItemViewController.h */,
 				3D887C44190A7CF100F2A9F1 /* ItemViewController.m */,
 				3D887C4919174C7F00F2A9F1 /* NewItemViewController.h */,
 				3D887C4A19174C7F00F2A9F1 /* NewItemViewController.m */,
