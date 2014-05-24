@@ -12,6 +12,6 @@
 
 @interface ItemViewController : UIViewController
 
-- (void) initItemNode: (Item *) item;
+- (void) setItem: (Item *) item;
 
 @end

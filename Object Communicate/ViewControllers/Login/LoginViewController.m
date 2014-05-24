@@ -101,7 +101,29 @@
     [[login titleLabel] setTextAlignment: NSTextAlignmentCenter];
     [[login titleLabel] setFont: [UIFont fontWithName: @"Verdana" size: 15.0]];
     [login setTitle: @"Login" forState: UIControlStateNormal];
+    [login addTarget: self action: @selector(test) forControlEvents: UIControlEventTouchUpInside];
     [self.view addSubview: login];
+}
+
+- (void) test
+{
+//    [[NSUserDefaults standardUserDefaults] setObject: @"This is a test" forKey: [NSString stringWithFormat: @"%i", arc4random() % 100]];
+    
+//    NSData * data = [NSKeyArchiver archivedDataWithRootObject: obj];
+    NSArray * defaultKeys = [[NSArray alloc] initWithObjects: @"NSLanguages", @"AppleITunesStoreItemKinds", @"AppleKeyboardsExpanded", @"NSInterfaceStyle", @"UIDisableLegacyTextView", @"AppleKeyboards", @"AppleLocale", @"AppleLanguages", nil];
+    for (NSString * key in [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys])
+    {
+        if (![defaultKeys containsObject: key])
+        {
+            NSLog(@"%@", key);
+        }
+    }
+//    NSLog(@"%@", [[[NSUserDefaults standardUserDefaults] dictionaryRepresentation] allKeys]);
+}
+
+- (void) clear
+{
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName: [[NSBundle mainBundle] bundleIdentifier]];
 }
 
 - (void) goToRVC

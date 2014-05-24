@@ -62,6 +62,48 @@
     Item * item4 = [[Item alloc] initName: @"Backpack" andDescription: @"black schoolbag with 4 layers" andX: 37.712569 andY: -122.219743 andActive: NO];
     Item * item5 = [[Item alloc] initName: @"Textbook" andDescription: @"linear algebra and differential equations lays/nagles" andX: 37.872173 andY: -122.267801 andActive: NO];
     Item * item6 = [[Item alloc] initName: @"Batteries" andDescription: @"aaa batteries, remember to bring for event" andX: 37.872062 andY: -122.257812 andActive: NO];
+    [item0 setNote: @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."];
+    [item1 setNote: @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."];
+    [item2 setNote: @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."];
+    [item3 setNote: @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."];
+    [item4 setNote: @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."];
+    [item5 setNote: @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."];
+    [item6 setNote: @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."];
+    for (int i = 0; i < 10; i++)
+    {
+        UIImage * image = [[UIImage alloc] init];
+        [item0 addImage: image];
+    }
+    for (int i = 0; i < 5; i++)
+    {
+        UIImage * image = [[UIImage alloc] init];
+        [item1 addImage: image];
+    }
+    for (int i = 0; i < 1; i++)
+    {
+        UIImage * image = [[UIImage alloc] init];
+        [item2 addImage: image];
+    }
+    for (int i = 0; i < 20; i++)
+    {
+        UIImage * image = [[UIImage alloc] init];
+        [item3 addImage: image];
+    }
+    for (int i = 0; i < 3; i++)
+    {
+        UIImage * image = [[UIImage alloc] init];
+        [item4 addImage: image];
+    }
+    for (int i = 0; i < 7; i++)
+    {
+        UIImage * image = [[UIImage alloc] init];
+        [item5 addImage: image];
+    }
+    for (int i = 0; i < 2; i++)
+    {
+        UIImage * image = [[UIImage alloc] init];
+        [item6 addImage: image];
+    }
     [self initItem: item0];
     [self initItem: item1];
     [self initItem: item2];
@@ -268,7 +310,7 @@
     }
     if (index == 2)
     {
-        [[appDelegate IVC] initItemNode: item];
+        [[appDelegate IVC] setItem: item];
     }
     [self.tabBarController setSelectedIndex: index];
 }

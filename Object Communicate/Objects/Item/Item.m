@@ -14,11 +14,12 @@
     NSString * description;
     double x;
     double y;
-    UIImage * image;
+    NSMutableArray * images;
     BOOL active;
     double battery;
     NSMutableArray * accesses;
     Marker * marker;
+    NSString * note;
 }
 
 - (id) initName: (NSString *) itemName andDescription: (NSString *) itemDescription andX: (double) itemX andY: (double) itemY andActive: (BOOL) state
@@ -31,6 +32,8 @@
         x = itemX;
         y = itemY;
         active = state;
+        images = [[NSMutableArray alloc] init];
+        note = @"";
     }
     return self;
 }
@@ -64,9 +67,14 @@
     marker = pin;
 }
 
-- (void) setImage: (UIImage *) picture
+- (void) addImage: (UIImage *) picture
 {
-    image = picture;
+    [images addObject: picture];
+}
+
+- (void) setNote: (NSString *) itemNote
+{
+    note = itemNote;
 }
 
 
@@ -105,9 +113,14 @@
     return marker;
 }
 
-- (UIImage *) getImage
+- (NSMutableArray *) getImages
 {
-    return image;
+    return images;
+}
+
+- (NSString *) getNote
+{
+    return note;
 }
 
 @end
