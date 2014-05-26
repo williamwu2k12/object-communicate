@@ -12,6 +12,7 @@
 @interface Marker : MKPointAnnotation
 
 - (void) setItem: (Item *) item;
+
 - (Item *) getItem;
 
 @end

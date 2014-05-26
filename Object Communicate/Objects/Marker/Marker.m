@@ -10,7 +10,17 @@
 
 @implementation Marker
 {
-    Item * item;
+    Item * item; // circular reference so that the item and marker can reference each other
+}
+
+- (id) initMarker
+{
+    self = [super init];
+    if (self != nil)
+    {
+        
+    }
+    return self;
 }
 
 - (void) setItem: (Item *) object

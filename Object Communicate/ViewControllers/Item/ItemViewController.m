@@ -50,12 +50,25 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self initHeader];
     [self initName];
     [self initDescription];
     [self initNote];
     [self initLocation];
     [self initStatistics];
     [self initImage];
+}
+
+- (void) initHeader
+{
+    UIView * header = [[UIView alloc] initWithFrame: CGRectMake(0.0, 0.0, [[UIScreen mainScreen] bounds].size.width, 0.04 * [[UIScreen mainScreen] bounds].size.height)];
+    [header setBackgroundColor: [UIColor darkGrayColor]];
+    [self.view addSubview: header];
+}
+
+- (UIStatusBarStyle) preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void) initName

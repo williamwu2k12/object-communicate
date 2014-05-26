@@ -12,15 +12,24 @@
 {
     NSString * name;
     NSString * description;
-    double x;
-    double y;
-    NSMutableArray * images;
-    BOOL active;
-    double battery;
-    NSMutableArray * accesses;
-    Marker * marker;
     NSString * note;
+    
+    NSMutableArray * images;
+    NSMutableArray * accesses;
+
+    double xposition;
+    double yposition;
+    double battery;
+    
+    Marker * marker;
+    BOOL active;
 }
+
+
+
+/*******************
+**  Initializers  **
+*******************/
 
 - (id) initName: (NSString *) itemName andDescription: (NSString *) itemDescription andX: (double) itemX andY: (double) itemY andActive: (BOOL) state
 {
@@ -29,26 +38,27 @@
     {
         name = itemName;
         description = itemDescription;
-        x = itemX;
-        y = itemY;
-        active = state;
-        images = [[NSMutableArray alloc] init];
         note = @"";
+        images = [[NSMutableArray alloc] init];
+        accesses = [[NSMutableArray alloc] init];
+        xposition = itemX;
+        yposition = itemY;
+        battery = 100.0;
+        marker = nil;
+        active = state;
     }
     return self;
 }
 
 
-// setters
+
+/*********************
+**  Setter Methods  **
+*********************/
 
 - (void) setName: (NSString *) itemName
 {
     name = itemName;
-}
-
-- (void) setActive: (BOOL) state
-{
-    active = state;
 }
 
 - (void) setDescription: (NSString *) itemDescription
@@ -56,15 +66,9 @@
     description = itemDescription;
 }
 
-- (void) setLocationWithX: (double) xPos andY: (double) yPos
+- (void) setNote: (NSString *) itemNote
 {
-    x = xPos;
-    y = yPos;
-}
-
-- (void) setMarker: (Marker *) pin
-{
-    marker = pin;
+    note = itemNote;
 }
 
 - (void) addImage: (UIImage *) picture
@@ -72,16 +76,42 @@
     [images addObject: picture];
 }
 
-- (void) setNote: (NSString *) itemNote
+- (void) clearImages
 {
-    note = itemNote;
+    [images removeAllObjects];
+}
+
+- (void) removeImage: (UIImage *) picture
+{
+    [images removeObject: picture];
+}
+
+- (void) setLocationWithX: (double) itemX andY: (double) itemY
+{
+    xposition = itemX;
+    yposition = itemY;
+}
+
+- (void) setBattery: (double) power
+{
+    battery = power;
+}
+
+- (void) setMarker: (Marker *) pin
+{
+    marker = pin;
+}
+
+- (void) setActive: (BOOL) state
+{
+    active = state;
 }
 
 
 
-
-
-// getters
+/*********************
+**  Getter Methods  **
+*********************/
 
 - (NSString *) getName
 {
@@ -93,24 +123,9 @@
     return description;
 }
 
-- (double) getX
+- (NSString *) getNote
 {
-    return x;
-}
-
-- (double) getY
-{
-    return y;
-}
-
-- (BOOL) getActive
-{
-    return active;
-}
-
-- (Marker *) getMarker
-{
-    return marker;
+    return note;
 }
 
 - (NSMutableArray *) getImages
@@ -118,9 +133,34 @@
     return images;
 }
 
-- (NSString *) getNote
+- (NSMutableArray *) getAccesses
 {
-    return note;
+    return accesses;
+}
+
+- (double) getX
+{
+    return xposition;
+}
+
+- (double) getY
+{
+    return yposition;
+}
+
+- (double) getBattery
+{
+    return battery;
+}
+
+- (Marker *) getMarker
+{
+    return marker;
+}
+
+- (BOOL) getActive
+{
+    return active;
 }
 
 @end

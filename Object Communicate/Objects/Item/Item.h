@@ -11,26 +11,40 @@
 
 @interface Item : NSObject
 
-// initializers
+/*******************
+**  Initializers  **
+*******************/
+
 - (id) initName: (NSString *) itemName andDescription: (NSString *) itemDescription andX: (double) itemX andY: (double) itemY andActive: (BOOL) state;
 
-// setters
+/*********************
+**  Setter Methods  **
+*********************/
+
 - (void) setName: (NSString *) itemName;
 - (void) setDescription: (NSString *) itemDescription;
-- (void) setLocationWithX: (double) xPos andY: (double) yPos;
-- (void) setActive: (BOOL) state;
-- (void) setMarker: (Marker *) pin;
-- (void) addImage: (UIImage *) picture;
 - (void) setNote: (NSString *) itemNote;
+- (void) addImage: (UIImage *) picture;
+- (void) clearImages;
+- (void) removeImage: (UIImage *) picture;
+- (void) setLocationWithX: (double) xPos andY: (double) yPos;
+- (void) setBattery: (double) power;
+- (void) setMarker: (Marker *) pin;
+- (void) setActive: (BOOL) state;
 
-// getters
+/*********************
+**  Getter Methods  **
+*********************/
+
 - (NSString *) getName;
 - (NSString *) getDescription;
+- (NSString *) getNote;
+- (NSMutableArray *) getAccesses;
+- (NSMutableArray *) getImages;
 - (double) getX;
 - (double) getY;
-- (BOOL) getActive;
+- (double) getBattery;
 - (Marker *) getMarker;
-- (NSMutableArray *) getImages;
-- (NSString *) getNote;
+- (BOOL) getActive;
 
 @end

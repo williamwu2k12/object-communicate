@@ -15,6 +15,7 @@
 
 @implementation MapViewController
 {
+    UILabel * title;
     MKMapView * map;
     CLLocationManager * manager;
     UISegmentedControl * maptype;
@@ -36,6 +37,7 @@
     // Do any additional setup after loading the view.
     appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     
+    [self initHeader];
     [self initMap];
     [self initMaptype];
     [self initManager];
@@ -65,9 +67,21 @@
     }
 }
 
+- (UIStatusBarStyle) preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+- (void) initHeader
+{
+    UIView * header = [[UIView alloc] initWithFrame: CGRectMake(0.0, 0.0, [[UIScreen mainScreen] bounds].size.width, 0.04 * [[UIScreen mainScreen] bounds].size.height)];
+    [header setBackgroundColor: [UIColor darkGrayColor]];
+    [self.view addSubview: header];
+}
+
 - (void) initMap
 {
-    map = [[MKMapView alloc] initWithFrame: CGRectMake(0.0, 0.1 * [[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, 0.9 * [[UIScreen mainScreen] bounds].size.height)];
+    map = [[MKMapView alloc] initWithFrame: CGRectMake(0.0, 0.04 * [[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width, 0.9 * [[UIScreen mainScreen] bounds].size.height)];
     [map setDelegate: (id) self];
     [self.view addSubview: map];
 }

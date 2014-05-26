@@ -42,6 +42,7 @@
     
     appDelegate = (AppDelegate *) [[UIApplication sharedApplication] delegate];
     
+    [self initHeader];
     [self initTitle];
     [self initAddButton];
     [self initTable];
@@ -50,18 +51,19 @@
     [self initOptions];
     
     // initialize preexisting cell data, same as in map view controller
+    // fix so this preloads from core data or from the string based storage
     for (int i = 0; i < [itemSource count]; i++)
     {
         [self initItem: (Item *) [itemSource objectAtIndex: i]];
     }
     
-    Item * item0 = [[Item alloc] initName: @"Clark Kerr Campus" andDescription: @"berkeley dormitories, home of two years" andX:37.8633232 andY: -122.24989010000002 andActive: YES];
-    Item * item1 = [[Item alloc] initName: @"2520 Hillegass Ave" andDescription: @"apartment complex next to people's park" andX: 37.864470 andY: -122.256706 andActive: YES];
+    Item * item0 = [[Item alloc] initName: @"Soccer Ball" andDescription: @"size five nike ball with green, orange, and white spots" andX:37.8633232 andY: -122.24989010000002 andActive: YES];
+    Item * item1 = [[Item alloc] initName: @"Soccer Cleats" andDescription: @"adidas predator black and yellow cleats" andX: 37.864470 andY: -122.256706 andActive: YES];
     Item * item2 = [[Item alloc] initName: @"iPhone" andDescription: @"black iPhone with blue and green protective case" andX: 37.875743 andY: -122.258732 andActive: YES];
     Item * item3 = [[Item alloc] initName: @"MacBook Pro" andDescription: @"13 inch apple computer with serial 123456789" andX: 37.866913 andY: -122.254971 andActive: NO];
     Item * item4 = [[Item alloc] initName: @"Backpack" andDescription: @"black schoolbag with 4 layers" andX: 37.712569 andY: -122.219743 andActive: NO];
     Item * item5 = [[Item alloc] initName: @"Textbook" andDescription: @"linear algebra and differential equations lays/nagles" andX: 37.872173 andY: -122.267801 andActive: NO];
-    Item * item6 = [[Item alloc] initName: @"Batteries" andDescription: @"aaa batteries, remember to bring for event" andX: 37.872062 andY: -122.257812 andActive: NO];
+    Item * item6 = [[Item alloc] initName: @"Cal Wallet" andDescription: @"insurance card, student identification, driver's license" andX: 37.872062 andY: -122.257812 andActive: NO];
     [item0 setNote: @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."];
     [item1 setNote: @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."];
     [item2 setNote: @"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."];
@@ -149,6 +151,14 @@
     [search resignFirstResponder];
 }
 
+
+- (void) initHeader
+{
+    UIView * header = [[UIView alloc] initWithFrame: CGRectMake(0.0, 0.0, [[UIScreen mainScreen] bounds].size.width, 0.04 * [[UIScreen mainScreen] bounds].size.height)];
+    [header setBackgroundColor: [UIColor darkGrayColor]];
+    [self.view addSubview: header];
+}
+
 /*
  initialize the title view, probably a label, with its own section and background
  */
@@ -160,6 +170,11 @@
     [title setTextAlignment: NSTextAlignmentLeft];
     [title setContentMode: UIViewContentModeLeft];
     [self.view addSubview: title];
+}
+
+- (UIStatusBarStyle) preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void) initAddButton
